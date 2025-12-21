@@ -91,8 +91,184 @@
     "id": 9,
     "name": "Big Roll (Caja x 288 unidades)",
     "category": "barquillos",
-    "image": "/barquillos/barquirroll_premium.png", 
+    "image": "/barquillos/big_roll.png", 
     "description": "Barquillos crocantes y deliciosos sabor vainilla",
+    "prices": {
+      "Lambayeque": 45.00,
+      "Piura": 48.00
+    }
+  },
+  {
+    "id": 10,
+    "name": "Cigarroll (Caja x 528 unidades)",
+    "category": "barquillos",
+    "image": "/barquillos/cigarroll.png", 
+    "description": "...",
+    "prices": {
+      "Lambayeque": 45.00,
+      "Piura": 48.00
+    }
+  },
+  {
+    "id": 11,
+    "name": "Conazo (Caja x 27 unidades)",
+    "category": "barquillos",
+    "image": "/barquillos/conazo.png", 
+    "description": "...",
+    "prices": {
+      "Lambayeque": 45.00,
+      "Piura": 48.00
+    }
+  },
+  {
+    "id": 12,
+    "name": "Cono Dulce (Caja x 400 unidades)",
+    "category": "barquillos",
+    "image": "/barquillos/cono_dulce.png", 
+    "description": "...",
+    "prices": {
+      "Lambayeque": 45.00,
+      "Piura": 48.00
+    }
+  },
+  {
+    "id": 13,
+    "name": "Coronita Amarilla (Caja x 735 unidades)",
+    "category": "barquillos",
+    "image": "/barquillos/coronita_amarilla.png", 
+    "description": "...",
+    "prices": {
+      "Lambayeque": 45.00,
+      "Piura": 48.00
+    }
+  },
+  {
+    "id": 14,
+    "name": "Coronita Surtida (Caja x 735 unidades)",
+    "category": "barquillos",
+    "image": "/barquillos/coronita_surtida.png", 
+    "description": "...",
+    "prices": {
+      "Lambayeque": 45.00,
+      "Piura": 48.00
+    }
+  },
+  {
+    "id": 15,
+    "name": "Gemelo Grande (Caja x 630 unidades)",
+    "category": "barquillos",
+    "image": "/barquillos/gemelo_grande.png", 
+    "description": "...",
+    "prices": {
+      "Lambayeque": 45.00,
+      "Piura": 48.00
+    }
+  },
+  {
+    "id": 16,
+    "name": "Megacono Chocolate (Caja x 48 unidades)",
+    "category": "barquillos",
+    "image": "/barquillos/megacono_chocolate.png", 
+    "description": "...",
+    "prices": {
+      "Lambayeque": 45.00,
+      "Piura": 48.00
+    }
+  },
+  {
+    "id": 17,
+    "name": "Megacono (Caja x 48 unidades)",
+    "category": "barquillos",
+    "image": "/barquillos/megacono.png", 
+    "description": "...",
+    "prices": {
+      "Lambayeque": 45.00,
+      "Piura": 48.00
+    }
+  },
+  {
+    "id": 18,
+    "name": "Pinocho Amarillo (Caja x 1250 unidades)",
+    "category": "barquillos",
+    "image": "/barquillos/pinocho_amarillo.png", 
+    "description": "...",
+    "prices": {
+      "Lambayeque": 45.00,
+      "Piura": 48.00
+    }
+  },
+  {
+    "id": 19,
+    "name": "Pinocho Caramelo (Caja x 1250 unidades)",
+    "category": "barquillos",
+    "image": "/barquillos/pinocho_caramelo.png", 
+    "description": "...",
+    "prices": {
+      "Lambayeque": 45.00,
+      "Piura": 48.00
+    }
+  },
+  {
+    "id": 20,
+    "name": "Pinocho Surtido (Caja x 1250 unidades)",
+    "category": "barquillos",
+    "image": "/barquillos/pinocho_surtido.png", 
+    "description": "...",
+    "prices": {
+      "Lambayeque": 45.00,
+      "Piura": 48.00
+    }
+  },
+  {
+    "id": 21,
+    "name": "Rollito Chocolate (Caja x 100 unidades)",
+    "category": "barquillos",
+    "image": "/barquillos/rollito_chocolate.png", 
+    "description": "...",
+    "prices": {
+      "Lambayeque": 45.00,
+      "Piura": 48.00
+    }
+  },
+  {
+    "id": 22,
+    "name": "Rollito Rojo (Caja x 100 unidades)",
+    "category": "barquillos",
+    "image": "/barquillos/rollito_rojo.png", 
+    "description": "...",
+    "prices": {
+      "Lambayeque": 45.00,
+      "Piura": 48.00
+    }
+  },
+  {
+    "id": 23,
+    "name": "Sombrero (Caja x 60 unidades)",
+    "category": "barquillos",
+    "image": "/barquillos/sombrero.png", 
+    "description": "...",
+    "prices": {
+      "Lambayeque": 45.00,
+      "Piura": 48.00
+    }
+  },
+  {
+    "id": 24,
+    "name": "Vasito (Caja x 450 unidades)",
+    "category": "barquillos",
+    "image": "/barquillos/vasito.png", 
+    "description": "...",
+    "prices": {
+      "Lambayeque": 45.00,
+      "Piura": 48.00
+    }
+  },
+  {
+    "id": 25,
+    "name": "Waflin (Caja x 300 unidades)",
+    "category": "barquillos",
+    "image": "/barquillos/waflin.png", 
+    "description": "...",
     "prices": {
       "Lambayeque": 45.00,
       "Piura": 48.00
