@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Barquirroll Clásico (Caja x 360 unidades)",
+    "image": "/img-productos/barquilla.jpg",  
+    "prices": {
+      "Chiclayo": 55.00,
+      "Piura": 60.00
+    }
+  },
+  {
+    "id": 2,
+    "name": "Barquirroll Marmoleado CH-V (Caja x 360 unidades)",
+    "image": "/img-productos/chocolate.jpg",
+    "prices": {
+      "Chiclayo": 55.00,
+      "Piura": 60.00
+    }
+  }
+]

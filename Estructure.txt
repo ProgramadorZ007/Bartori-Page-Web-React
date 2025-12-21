@@ -1,0 +1,29 @@
+src/
+├── assets/              # Imágenes, logos, fuentes (SVG, PNG)
+├── components/          # Componentes reutilizables (Botones, Inputs, Cards)
+│   ├── ui/              # Componentes de interfaz básicos (Botones, Modales)
+│   ├── layout/          # Estructura principal
+│   │   ├── Header.jsx   # Tu header con logo y navegación
+│   │   ├── Footer.jsx   # Tu footer persistente
+│   │   └── Layout.jsx   # El envoltorio que mantiene Header y Footer
+│   └── products/        # Componentes específicos de productos
+│       ├── ProductCard.jsx
+│       └── ProductList.jsx
+├── context/             # Estado global (Context API)
+│   ├── CartContext.jsx  # Lógica del carrito y envío a WhatsApp
+│   └── RegionContext.jsx # Lógica de la región (Lima, Provincia, etc.)
+├── data/                # Datos estáticos (JSON)
+│   ├── products.json    # Lista de barquillos y bases
+│   └── prices.json      # Precios por región (para el futuro)
+├── hooks/               # Custom hooks
+│   └── useWhatsApp.js   # Lógica para formatear el mensaje
+├── pages/               # Vistas principales (Rutas)
+│   ├── Home.jsx
+│   ├── AboutUs.jsx      # Sobre Nosotros
+│   ├── Products.jsx     # Catálogo general
+│   ├── Wholesale.jsx    # Cotizar mayorista
+│   └── ProductDetail.jsx
+├── utils/               # Funciones auxiliares
+│   └── currencyFormatter.js
+├── App.jsx              # Configuración de Rutas
+└── main.jsx             # Punto de entrada
