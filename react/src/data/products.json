@@ -1,9 +1,9 @@
 [
   {
     "id": 1,
-    "name": "BARTORI Clásico (Caja x 360 unidades)",
+    "name": "Barquirroll Clásico (Caja x 360 unidades)",
     "category": "barquillos",
-    "image": "/img-productos/barquilla.jpg",
+    "image": "/img-productos/barquirroll_clasico.png",
     "description": "Barquillos clásicos crocantes y deliciosos",
     "prices": {
       "Lambayeque": 55.00,
