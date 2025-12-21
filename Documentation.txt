@@ -1,0 +1,6 @@
+Primeros pasos: 
+=======================================================
+- npm create vite@latest react -- --template react
+- cd react
+- npm install react-router-dom lucide-react
+- npm run dev
