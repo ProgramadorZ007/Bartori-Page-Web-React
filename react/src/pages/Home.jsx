@@ -129,61 +129,8 @@ export const Home = () => {
         </div>
       </section>
 
-      {/* ================= BENEFICIOS ================= */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-8 md:px-16">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: Award,
-                title: 'Calidad Premium',
-                text: 'Estándares internacionales en cada producto que fabricamos',
-                color: '#C12423'
-              },
-              {
-                icon: Clock,
-                title: 'Entregas Puntuales',
-                text: 'Logística eficiente garantizando disponibilidad constante',
-                color: '#D8992F'
-              },
-              {
-                icon: Shield,
-                title: '25+ Años de Experiencia',
-                text: 'Trayectoria consolidada respaldando tu negocio',
-                color: '#322B80'
-              }
-            ].map((item, i) => {
-              const Icon = item.icon;
-              return (
-                <div
-                  key={i}
-                  className="group relative bg-gray-50 p-8 rounded-xl border border-gray-200 hover:border-gray-300 transition-all duration-300"
-                >
-                  <div className="flex items-start gap-4">
-                    <div
-                      className="flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center"
-                      style={{ backgroundColor: `${item.color}10` }}
-                    >
-                      <Icon className="w-6 h-6" style={{ color: item.color }} />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-2">
-                        {item.title}
-                      </h3>
-                      <p className="text-gray-600 leading-relaxed">
-                        {item.text}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
       {/* ================= PRODUCTOS ================= */}
-      <section className="py-20 bg-gray-50">
+      <section className="pt-20 pb-20 pt-20 bg-white">
         <div className="max-w-7xl mx-auto px-8 md:px-16">
           {/* Título de sección */}
           <div className="mb-12">
@@ -220,9 +167,20 @@ export const Home = () => {
       </section>
 
       {/* ================= MAYORISTA ================= */}
-      <section className="py-20 bg-white">
+      <section className=" pb-20 bg-white">
         <div className="max-w-7xl mx-auto px-8 md:px-16">
-          <div className="relative overflow-hidden bg-gradient-to-br from-[#161f32] to-[#111827] rounded-2xl">
+          {/* Divisor decorativo sutil */}
+          <div className="flex items-center gap-4 mb-16">
+            <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
+            <div className="flex items-center gap-2 text-gray-400">
+              <div className="w-2 h-2 rounded-full bg-[#D8992F]"></div>
+              <div className="w-2 h-2 rounded-full bg-[#C12423]"></div>
+              <div className="w-2 h-2 rounded-full bg-[#322B80]"></div>
+            </div>
+            <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
+          </div>
+
+          <div className="relative overflow-hidden bg-gradient-to-br from-[#322B80] to-[#111827] rounded-2xl">
             {/* Patrón decorativo sutil */}
             <div className="absolute inset-0 opacity-5">
               <div className="absolute inset-0" style={{

@@ -37,9 +37,9 @@ export const Header = () => {
             {/* NAV */}
             <nav className="hidden lg:flex justify-center gap-10">
               {[
-                { to: '/', label: 'Página Principal' },
-                { to: '/about', label: 'Sobre Nosotros' },
-                { to: '/products', label: 'Nuestros Productos' }
+                { to: '/', label: 'Inicio' },
+                { to: '/about', label: 'Nosotros' },
+                { to: '/products', label: 'Productos' }
               ].map(link => (
                 <Link
                   key={link.to}
@@ -106,9 +106,9 @@ export const Header = () => {
           {mobileMenuOpen && (
             <nav className="lg:hidden mt-6 pt-6 border-t flex flex-col gap-3">
               {[
-                { to: '/', label: 'Página Principal' },
-                { to: '/about', label: 'Sobre Nosotros' },
-                { to: '/products', label: 'Nuestros Productos' }
+                { to: '/', label: 'Inicio' },
+                { to: '/about', label: 'Nosotros' },
+                { to: '/products', label: 'Productos' }
               ].map(link => (
                 <Link
                   key={link.to}
