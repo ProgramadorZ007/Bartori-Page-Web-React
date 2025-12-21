@@ -7,7 +7,8 @@ import {
   Award,
   Clock,
   Shield,
-  Phone
+  Phone,
+  Package
 } from 'lucide-react';
 import { ProductCard } from '../components/products/ProductCard';
 import productsData from '../data/products.json';
@@ -54,37 +55,40 @@ export const Home = () => {
     <div className="bg-white">
 
       {/* ================= HERO ================= */}
-      <section className="relative h-[650px] overflow-hidden">
+      <section className="relative h-[600px] overflow-hidden bg-gray-900">
         {slides.map((slide, index) => (
           <div
             key={index}
-            className={`absolute inset-0 transition-all duration-1000 ${
+            className={`absolute inset-0 transition-opacity duration-1000 ${
               index === currentSlide
-                ? 'opacity-100 scale-100'
-                : 'opacity-0 scale-105'
+                ? 'opacity-100'
+                : 'opacity-0'
             }`}
           >
             {/* Imagen */}
-            <div
-              className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: `url(${slide.image})` }}
-            />
+            <div className="absolute inset-0">
+              <img 
+                src={slide.image} 
+                alt={slide.title}
+                className="w-full h-full object-cover"
+              />
+            </div>
 
             {/* Overlay elegante */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#322B80]/90 via-[#322B80]/60 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#322B80]/85 via-[#322B80]/50 to-transparent" />
 
             {/* Contenido */}
-            <div className="relative h-full container mx-auto px-10 flex items-center">
-              <div className="max-w-2xl">
-                <h1 className="text-5xl md:text-6xl font-extrabold text-white leading-tight mb-6">
+            <div className="relative h-full max-w-7xl mx-auto px-8 md:px-16 flex items-center">
+              <div className="max-w-xl">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4">
                   {slide.title}
                 </h1>
-                <p className="text-xl md:text-2xl text-white/90 mb-10">
+                <p className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed">
                   {slide.subtitle}
                 </p>
                 <Link
                   to="/products"
-                  className="inline-flex items-center gap-3 bg-[#C12423] hover:bg-[#D8992F] text-white px-8 py-4 rounded-lg font-bold transition-all shadow-lg"
+                  className="inline-flex items-center gap-3 bg-[#C12423] hover:bg-[#D8992F] text-white px-8 py-4 rounded-lg font-semibold transition-all shadow-lg hover:shadow-xl"
                 >
                   {slide.cta}
                   <ArrowRight className="w-5 h-5" />
@@ -97,28 +101,28 @@ export const Home = () => {
         {/* Controles */}
         <button
           onClick={prevSlide}
-          className="absolute left-6 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 backdrop-blur rounded-full p-3"
+          className="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center transition-all"
         >
           <ChevronLeft className="w-6 h-6 text-white" />
         </button>
 
         <button
           onClick={nextSlide}
-          className="absolute right-6 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 backdrop-blur rounded-full p-3"
+          className="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center transition-all"
         >
           <ChevronRight className="w-6 h-6 text-white" />
         </button>
 
         {/* Indicadores */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-3">
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2">
           {slides.map((_, i) => (
             <button
               key={i}
               onClick={() => setCurrentSlide(i)}
-              className={`h-[3px] rounded-full transition-all ${
+              className={`h-1 rounded-full transition-all ${
                 i === currentSlide
-                  ? 'w-14 bg-white'
-                  : 'w-8 bg-white/50'
+                  ? 'w-12 bg-white'
+                  : 'w-8 bg-white/40'
               }`}
             />
           ))}
@@ -126,66 +130,78 @@ export const Home = () => {
       </section>
 
       {/* ================= BENEFICIOS ================= */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-10">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-8 md:px-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                icon: <Award />,
+                icon: Award,
                 title: 'Calidad Premium',
-                text: 'Estándares internacionales en cada producto',
+                text: 'Estándares internacionales en cada producto que fabricamos',
                 color: '#C12423'
               },
               {
-                icon: <Clock />,
+                icon: Clock,
                 title: 'Entregas Puntuales',
-                text: 'Logística eficiente a nivel nacional',
+                text: 'Logística eficiente garantizando disponibilidad constante',
                 color: '#D8992F'
               },
               {
-                icon: <Shield />,
+                icon: Shield,
                 title: '25+ Años de Experiencia',
-                text: 'Trayectoria sólida en el mercado peruano',
+                text: 'Trayectoria consolidada respaldando tu negocio',
                 color: '#322B80'
               }
-            ].map((item, i) => (
-              <div
-                key={i}
-                className="bg-white p-10 rounded-2xl shadow-sm hover:shadow-md transition-all"
-              >
+            ].map((item, i) => {
+              const Icon = item.icon;
+              return (
                 <div
-                  className="w-14 h-14 rounded-lg flex items-center justify-center mb-6"
-                  style={{ backgroundColor: `${item.color}15` }}
+                  key={i}
+                  className="group relative bg-gray-50 p-8 rounded-xl border border-gray-200 hover:border-gray-300 transition-all duration-300"
                 >
-                  <span style={{ color: item.color }}>
-                    {item.icon}
-                  </span>
+                  <div className="flex items-start gap-4">
+                    <div
+                      className="flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center"
+                      style={{ backgroundColor: `${item.color}10` }}
+                    >
+                      <Icon className="w-6 h-6" style={{ color: item.color }} />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-2">
+                        {item.title}
+                      </h3>
+                      <p className="text-gray-600 leading-relaxed">
+                        {item.text}
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold text-[#322B80] mb-3">
-                  {item.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {item.text}
-                </p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* ================= PRODUCTOS ================= */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-10">
-          <div className="text-center mb-14">
-            <h2 className="text-4xl font-extrabold text-[#322B80] mb-4">
-              Nuestros Productos
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-8 md:px-16">
+          {/* Título de sección */}
+          <div className="mb-12">
+            <div className="flex items-center gap-3 mb-2">
+              <div className="w-1 h-8 bg-[#C12423] rounded-full"></div>
+              <span className="text-[#D8992F] font-semibold uppercase tracking-wider text-sm">
+                Lo mejor de Bartori
+              </span>
+            </div>
+            <h2 className="text-4xl font-bold text-[#322B80] mb-3">
+              Productos Destacados
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Barquillos y conos diseñados para realzar cada helado
+            <p className="text-gray-600 text-lg max-w-2xl">
+              Barquillos y conos diseñados para realzar cada experiencia
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-14">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             {featuredProducts.map(product => (
               <ProductCard key={product.id} product={product} />
             ))}
@@ -194,9 +210,9 @@ export const Home = () => {
           <div className="text-center">
             <Link
               to="/products"
-              className="inline-flex items-center gap-3 bg-[#322B80] hover:bg-[#C12423] text-white px-10 py-4 rounded-lg font-bold transition-all"
+              className="inline-flex items-center gap-2 bg-[#322B80] hover:bg-[#C12423] text-white px-8 py-4 rounded-lg font-semibold transition-all shadow-md hover:shadow-lg"
             >
-              Ver todos los productos
+              Ver catálogo completo
               <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
@@ -204,29 +220,74 @@ export const Home = () => {
       </section>
 
       {/* ================= MAYORISTA ================= */}
-      <section className="py-24 bg-gradient-to-br from-[#322B80] to-[#C12423] text-white">
-        <div className="container mx-auto px-10">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-4xl font-extrabold mb-6">
-              ¿Tienes un negocio de helados?
-            </h2>
-            <p className="text-xl text-white/90 mb-10">
-              Accede a precios especiales y condiciones exclusivas
-            </p>
-            <div className="flex flex-col sm:flex-row gap-5 justify-center">
-              <Link
-                to="/wholesale"
-                className="bg-white text-[#C12423] hover:bg-[#D8992F] hover:text-white px-10 py-4 rounded-lg font-bold transition-all"
-              >
-                Solicitar cotización
-              </Link>
-              <a
-                href="tel:+51013249090"
-                className="flex items-center justify-center gap-3 border-2 border-white/40 px-10 py-4 rounded-lg font-semibold hover:bg-white/10"
-              >
-                <Phone className="w-5 h-5" />
-                (+51) 01 324 90 90
-              </a>
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-8 md:px-16">
+          <div className="relative overflow-hidden bg-gradient-to-br from-[#161f32] to-[#111827] rounded-2xl">
+            {/* Patrón decorativo sutil */}
+            <div className="absolute inset-0 opacity-5">
+              <div className="absolute inset-0" style={{
+                backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+              }}></div>
+            </div>
+
+            <div className="relative grid md:grid-cols-2 gap-12 p-12 md:p-16 items-center">
+              {/* Contenido */}
+              <div className="text-white">
+                <div className="inline-block bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
+                  <span className="text-[#D8992F] font-semibold text-sm flex items-center gap-2">
+                    <Package className="w-4 h-4" />
+                    Precios especiales
+                  </span>
+                </div>
+                
+                <h2 className="text-4xl font-bold mb-4">
+                  ¿Tienes un negocio de helados?
+                </h2>
+                
+                <p className="text-white/90 text-lg mb-8 leading-relaxed">
+                  Accede a condiciones preferenciales, descuentos por volumen y atención personalizada para hacer crecer tu negocio.
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Link
+                    to="/wholesale"
+                    className="inline-flex items-center justify-center gap-2 bg-white text-[#322B80] hover:bg-[#D8992F] hover:text-white px-8 py-4 rounded-lg font-semibold transition-all shadow-lg"
+                  >
+                    Solicitar cotización
+                    <ArrowRight className="w-5 h-5" />
+                  </Link>
+                  
+                  <a
+                    href="tel:+51013249090"
+                    className="inline-flex items-center justify-center gap-2 border-2 border-white/30 hover:border-white/60 text-white px-8 py-4 rounded-lg font-semibold transition-all"
+                  >
+                    <Phone className="w-5 h-5" />
+                    <span>+51 01 324 9090</span>
+                  </a>
+                </div>
+              </div>
+
+              {/* Estadísticas */}
+              <div className="grid grid-cols-2 gap-6">
+                {[
+                  { number: '25+', label: 'Años de experiencia' },
+                  { number: '1000+', label: 'Clientes satisfechos' },
+                  { number: '24/7', label: 'Disponibilidad' },
+                  { number: '100%', label: 'Calidad garantizada' }
+                ].map((stat, i) => (
+                  <div 
+                    key={i} 
+                    className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 text-center"
+                  >
+                    <div className="text-3xl font-bold text-white mb-2">
+                      {stat.number}
+                    </div>
+                    <div className="text-white/80 text-sm">
+                      {stat.label}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
