@@ -1,24 +1,28 @@
 [
   {
     "id": 1,
-    "name": "Barquirroll Clásico (Caja x 360 unidades)",
+    "name": "BARTORI Clásico (Caja x 360 unidades)",
     "category": "barquillos",
     "image": "/img-productos/barquilla.jpg",
     "description": "Barquillos clásicos crocantes y deliciosos",
     "prices": {
       "Lambayeque": 55.00,
-      "Piura": 60.00
+      "Piura": 60.00,
+      "Chiclayo": 55.00,
+      "Trujillo": 58.00
     }
   },
   {
     "id": 2,
-    "name": "Barquirroll Marmoleado CH-V (Caja x 360 unidades)",
+    "name": "BARTORI Marmoleado CH-V (Caja x 360 unidades)",
     "category": "barquillos",
     "image": "/img-productos/chocolate.jpg",
     "description": "Barquillos con delicioso marmoleado de chocolate y vainilla",
     "prices": {
       "Lambayeque": 55.00,
-      "Piura": 60.00
+      "Piura": 60.00,
+      "Chiclayo": 55.00,
+      "Trujillo": 58.00
     }
   },
   {
@@ -29,7 +33,9 @@
     "description": "Bases tipo waffle perfectas para helados artesanales",
     "prices": {
       "Lambayeque": 45.00,
-      "Piura": 48.00
+      "Piura": 48.00,
+      "Chiclayo": 45.00,
+      "Trujillo": 47.00
     }
   },
   {
@@ -40,7 +46,9 @@
     "description": "Conos clásicos crocantes para helado tradicional",
     "prices": {
       "Lambayeque": 40.00,
-      "Piura": 43.00
+      "Piura": 43.00,
+      "Chiclayo": 40.00,
+      "Trujillo": 42.00
     }
   }
 ]

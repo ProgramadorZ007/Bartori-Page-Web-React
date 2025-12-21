@@ -24,29 +24,29 @@ export const Header = () => {
           <div className="flex items-center justify-between">
             
             {/* LOGO */}
-            <Link to="/" className="flex items-center gap-2">
-              <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-xl">BR</span>
+            <Link to="/" className="flex items-center gap-3">
+              <div className="relative">
+                <span className="text-4xl font-bold text-[#C8102E]" style={{ fontFamily: 'Arial Black, sans-serif' }}>
+                  BARTORI
+                </span>
+                <div className="absolute -left-2 top-0 w-1 h-full bg-[#F7B731] transform -skew-x-12"></div>
               </div>
-              <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Barquirroll
-              </span>
             </Link>
 
             {/* NAVEGACIÓN DESKTOP */}
             <nav className="hidden md:flex items-center gap-6">
-              <Link to="/" className="text-gray-700 hover:text-blue-600 font-medium transition">
-                Home
+              <Link to="/" className="text-gray-700 hover:text-[#C8102E] font-semibold transition">
+                Inicio
               </Link>
-              <Link to="/about" className="text-gray-700 hover:text-blue-600 font-medium transition">
+              <Link to="/about" className="text-gray-700 hover:text-[#C8102E] font-semibold transition">
                 Sobre Nosotros
               </Link>
-              <Link to="/products" className="text-gray-700 hover:text-blue-600 font-medium transition">
+              <Link to="/products" className="text-gray-700 hover:text-[#C8102E] font-semibold transition">
                 Productos
               </Link>
               <Link 
                 to="/wholesale" 
-                className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-5 py-2 rounded-full font-semibold hover:shadow-lg transition transform hover:-translate-y-0.5"
+                className="bg-gradient-to-r from-[#C8102E] to-[#E91E8C] text-white px-6 py-2.5 rounded-full font-bold hover:shadow-lg transition transform hover:-translate-y-0.5"
               >
                 Cotizar Mayorista
               </Link>
@@ -58,9 +58,9 @@ export const Header = () => {
               {/* SELECTOR DE REGIÓN */}
               <button
                 onClick={() => setShowRegionModal(true)}
-                className="flex items-center gap-2 px-4 py-2 border-2 border-gray-300 rounded-lg hover:border-blue-500 transition"
+                className="flex items-center gap-2 px-4 py-2 border-2 border-gray-300 rounded-lg hover:border-[#C8102E] transition"
               >
-                <MapPin className="w-5 h-5 text-blue-600" />
+                <MapPin className="w-5 h-5 text-[#C8102E]" />
                 <span className="hidden sm:inline text-sm font-medium">
                   {region || 'Seleccionar región'}
                 </span>
@@ -68,9 +68,9 @@ export const Header = () => {
 
               {/* CARRITO */}
               <Link to="/cart" className="relative">
-                <ShoppingCart className="w-6 h-6 text-gray-700 hover:text-blue-600 transition" />
+                <ShoppingCart className="w-6 h-6 text-gray-700 hover:text-[#C8102E] transition" />
                 {getTotalItems() > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                  <span className="absolute -top-2 -right-2 bg-[#C8102E] text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
                     {getTotalItems()}
                   </span>
                 )}
@@ -91,28 +91,28 @@ export const Header = () => {
             <nav className="md:hidden mt-4 flex flex-col gap-3 pb-4">
               <Link 
                 to="/" 
-                className="text-gray-700 hover:text-blue-600 font-medium py-2"
+                className="text-gray-700 hover:text-[#C8102E] font-semibold py-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Home
+                Inicio
               </Link>
               <Link 
                 to="/about" 
-                className="text-gray-700 hover:text-blue-600 font-medium py-2"
+                className="text-gray-700 hover:text-[#C8102E] font-semibold py-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Sobre Nosotros
               </Link>
               <Link 
                 to="/products" 
-                className="text-gray-700 hover:text-blue-600 font-medium py-2"
+                className="text-gray-700 hover:text-[#C8102E] font-semibold py-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Productos
               </Link>
               <Link 
                 to="/wholesale" 
-                className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-5 py-2 rounded-full font-semibold text-center"
+                className="bg-gradient-to-r from-[#C8102E] to-[#E91E8C] text-white px-5 py-2 rounded-full font-semibold text-center"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Cotizar Mayorista
@@ -127,7 +127,7 @@ export const Header = () => {
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl font-bold text-gray-800">Selecciona tu región</h2>
+              <h2 className="text-2xl font-bold text-[#2E3192]">Selecciona tu región</h2>
               <button 
                 onClick={() => setShowRegionModal(false)}
                 className="text-gray-400 hover:text-gray-600"
@@ -147,8 +147,8 @@ export const Header = () => {
                   onClick={() => handleRegionSelect(r)}
                   className={`p-4 rounded-xl border-2 font-semibold transition transform hover:scale-105 ${
                     region === r
-                      ? 'bg-blue-600 text-white border-blue-600 shadow-lg'
-                      : 'bg-white text-gray-700 border-gray-300 hover:border-blue-500'
+                      ? 'bg-[#C8102E] text-white border-[#C8102E] shadow-lg'
+                      : 'bg-white text-gray-700 border-gray-300 hover:border-[#C8102E]'
                   }`}
                 >
                   <MapPin className="w-5 h-5 mx-auto mb-2" />
