@@ -180,7 +180,7 @@ export const Home = () => {
             <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
           </div>
 
-          <div className="relative overflow-hidden bg-gradient-to-br from-[#322B80] to-[#111827] rounded-2xl">
+          <div className="relative overflow-hidden bg-gradient-to-br from-[#111827] to-[#111827] rounded-2xl">
             {/* Patrón decorativo sutil */}
             <div className="absolute inset-0 opacity-5">
               <div className="absolute inset-0" style={{
