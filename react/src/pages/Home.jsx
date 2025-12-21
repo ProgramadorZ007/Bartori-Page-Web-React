@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronLeft, ChevronRight, ShoppingBag, Star, Truck, Award, Package } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ArrowRight, Award, Clock, Shield, Phone } from 'lucide-react';
 import { ProductCard } from '../components/products/ProductCard';
 import productsData from '../data/products.json';
 
@@ -9,32 +9,27 @@ export const Home = () => {
 
   const slides = [
     {
-      image: '/img-productos/barquilla.jpg',
-      title: 'LOS BARQUILLOS MÁS CROCANTES',
-      subtitle: 'Conos y barquillos para helados, postres y decoraciones',
-      cta: 'Ver Productos',
-      gradient: 'from-[#C8102E]/90 to-[#E91E8C]/90'
+      title: 'Excelencia en cada barquillo',
+      subtitle: 'Más de 25 años siendo líderes en la industria peruana',
+      cta: 'Conocer más',
+      image: '/img-productos/barquilla.jpg'
     },
     {
-      image: '/img-productos/chocolate.jpg',
-      title: 'VARIEDAD EN SABORES',
-      subtitle: 'Clásicos y marmoleados que encantan',
-      cta: 'Explorar Catálogo',
-      gradient: 'from-[#2E3192]/90 to-[#E91E8C]/90'
+      title: 'Calidad garantizada',
+      subtitle: 'Productos certificados con los más altos estándares',
+      cta: 'Ver productos',
+      image: '/img-productos/chocolate.jpg'
     },
     {
-      image: '/img-productos/barquilla.jpg',
-      title: 'ENVÍOS A TODO EL PERÚ',
-      subtitle: 'Logística confiable y entregas puntuales',
-      cta: 'Cotizar Ahora',
-      gradient: 'from-[#F7B731]/90 to-[#C8102E]/90'
+      title: 'Servicio a nivel nacional',
+      subtitle: 'Entregas rápidas y seguras en todo el Perú',
+      cta: 'Cotizar ahora',
+      image: '/img-productos/barquilla.jpg'
     }
   ];
 
-  // Productos destacados
   const featuredProducts = productsData.slice(0, 4);
 
-  // Auto-avanzar carrusel
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
@@ -47,169 +42,192 @@ export const Home = () => {
 
   return (
     <div className="bg-white">
-      {/* ========== CARRUSEL HERO ========== */}
-      <div className="relative w-full h-[600px] overflow-hidden">
+      {/* ========== HERO SLIDER ========== */}
+      <section className="relative h-[600px] overflow-hidden bg-gray-900">
         {slides.map((slide, index) => (
           <div
             key={index}
-            className={`absolute inset-0 transition-opacity duration-1000 ${
+            className={`absolute inset-0 transition-opacity duration-700 ${
               index === currentSlide ? 'opacity-100' : 'opacity-0'
             }`}
           >
+            {/* Imagen de fondo */}
             <div 
               className="absolute inset-0 bg-cover bg-center"
               style={{ backgroundImage: `url(${slide.image})` }}
             />
-            <div className={`absolute inset-0 bg-gradient-to-r ${slide.gradient}`} />
             
-            <div className="relative h-full flex items-center justify-center text-center text-white px-4">
-              <div className="max-w-4xl space-y-6">
-                <h1 className="text-5xl md:text-7xl font-extrabold leading-tight animate-fade-in drop-shadow-2xl">
+            {/* Overlay oscuro */}
+            <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
+            
+            {/* Contenido */}
+            <div className="relative h-full container mx-auto px-6 flex items-center">
+              <div className="max-w-2xl">
+                <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
                   {slide.title}
                 </h1>
-                <p className="text-xl md:text-3xl font-light animate-fade-in-delay drop-shadow-lg">
+                <p className="text-xl md:text-2xl text-gray-200 mb-8 leading-relaxed">
                   {slide.subtitle}
                 </p>
                 <Link
                   to="/products"
-                  className="inline-block bg-white text-[#C8102E] px-10 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition transform hover:scale-110 shadow-2xl animate-fade-in-delay"
+                  className="inline-flex items-center gap-2 bg-[#C12423] hover:bg-[#D8992F] text-white px-8 py-4 rounded-lg font-semibold transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                 >
-                  {slide.cta} →
+                  {slide.cta}
+                  <ArrowRight className="w-5 h-5" />
                 </Link>
               </div>
             </div>
           </div>
         ))}
 
-        {/* Controles */}
+        {/* Controles del slider */}
         <button
           onClick={prevSlide}
-          className="absolute left-6 top-1/2 -translate-y-1/2 bg-white/30 hover:bg-white/50 backdrop-blur-md rounded-full p-4 transition group"
+          className="absolute left-6 top-1/2 -translate-y-1/2 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-full p-3 transition-all"
         >
-          <ChevronLeft className="w-8 h-8 text-white" />
+          <ChevronLeft className="w-6 h-6 text-white" />
         </button>
         <button
           onClick={nextSlide}
-          className="absolute right-6 top-1/2 -translate-y-1/2 bg-white/30 hover:bg-white/50 backdrop-blur-md rounded-full p-4 transition group"
+          className="absolute right-6 top-1/2 -translate-y-1/2 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-full p-3 transition-all"
         >
-          <ChevronRight className="w-8 h-8 text-white" />
+          <ChevronRight className="w-6 h-6 text-white" />
         </button>
 
         {/* Indicadores */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3">
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2">
           {slides.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentSlide(index)}
-              className={`h-2 rounded-full transition-all ${
+              className={`h-1 rounded-full transition-all ${
                 index === currentSlide 
                   ? 'bg-white w-12' 
-                  : 'bg-white/50 w-2 hover:bg-white/70'
+                  : 'bg-white/50 w-8 hover:bg-white/70'
               }`}
             />
           ))}
         </div>
-      </div>
+      </section>
 
-      {/* ========== BENEFICIOS ========== */}
-      <div className="bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50 py-20">
-        <div className="container mx-auto px-4">
+      {/* ========== CARACTERÍSTICAS ========== */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+              <div className="w-14 h-14 bg-[#C12423]/10 rounded-lg flex items-center justify-center mb-4">
+                <Award className="w-7 h-7 text-[#C12423]" />
+              </div>
+              <h3 className="text-xl font-bold text-[#322B80] mb-2">Calidad Premium</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Productos elaborados con estándares internacionales de calidad
+              </p>
+            </div>
+
+            <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+              <div className="w-14 h-14 bg-[#D8992F]/10 rounded-lg flex items-center justify-center mb-4">
+                <Clock className="w-7 h-7 text-[#D8992F]" />
+              </div>
+              <h3 className="text-xl font-bold text-[#322B80] mb-2">Entregas Puntuales</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Sistema logístico eficiente para todo el territorio peruano
+              </p>
+            </div>
+
+            <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+              <div className="w-14 h-14 bg-[#322B80]/10 rounded-lg flex items-center justify-center mb-4">
+                <Shield className="w-7 h-7 text-[#322B80]" />
+              </div>
+              <h3 className="text-xl font-bold text-[#322B80] mb-2">25+ Años de Experiencia</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Respaldados por décadas de trayectoria en el mercado
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========== PRODUCTOS DESTACADOS ========== */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-6">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-[#2E3192] mb-4">
-              ¿Por qué elegirnos?
+            <h2 className="text-4xl font-bold text-[#322B80] mb-4">
+              Nuestros Productos
             </h2>
-            <p className="text-xl text-gray-600">
-              Más de 25 años siendo la mejor opción
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Descubre nuestra línea de barquillos y conos de la más alta calidad
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-3xl shadow-xl hover:shadow-2xl transition transform hover:-translate-y-2 group">
-              <div className="w-20 h-20 bg-gradient-to-br from-[#C8102E] to-[#E91E8C] rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition">
-                <Award className="w-10 h-10 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold mb-3 text-gray-900">Calidad Premium</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Productos elaborados con los mejores ingredientes, garantizando frescura y sabor inigualable
-              </p>
-            </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            {featuredProducts.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
 
-            <div className="bg-white p-8 rounded-3xl shadow-xl hover:shadow-2xl transition transform hover:-translate-y-2 group">
-              <div className="w-20 h-20 bg-gradient-to-br from-[#2E3192] to-[#E91E8C] rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition">
-                <Star className="w-10 h-10 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold mb-3 text-gray-900">25+ Años</h3>
-              <p className="text-gray-600 leading-relaxed">
-                De experiencia endulzando momentos especiales en todo el Perú
-              </p>
-            </div>
+          <div className="text-center">
+            <Link
+              to="/products"
+              className="inline-flex items-center gap-2 bg-[#322B80] hover:bg-[#C12423] text-white px-8 py-4 rounded-lg font-semibold transition-all shadow-md hover:shadow-lg"
+            >
+              Ver todos los productos
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+          </div>
+        </div>
+      </section>
 
-            <div className="bg-white p-8 rounded-3xl shadow-xl hover:shadow-2xl transition transform hover:-translate-y-2 group">
-              <div className="w-20 h-20 bg-gradient-to-br from-[#F7B731] to-[#C8102E] rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition">
-                <Truck className="w-10 h-10 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold mb-3 text-gray-900">Envíos Rápidos</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Logística confiable a todo el país con entregas puntuales
-              </p>
+      {/* ========== SECCIÓN MAYORISTA ========== */}
+      <section className="py-20 bg-gradient-to-br from-[#322B80] to-[#C12423] text-white relative overflow-hidden">
+        {/* Patrón decorativo */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-64 h-64 bg-white rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full translate-x-1/3 translate-y-1/3"></div>
+        </div>
+
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-4xl font-bold mb-6">
+              ¿Tienes un negocio de helados?
+            </h2>
+            <p className="text-xl mb-8 text-gray-100">
+              Obtén precios especiales y condiciones exclusivas para compras mayoristas
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                to="/wholesale"
+                className="inline-flex items-center justify-center gap-2 bg-white text-[#C12423] hover:bg-[#D8992F] hover:text-white px-8 py-4 rounded-lg font-bold transition-all shadow-lg"
+              >
+                Solicitar cotización
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+              <a
+                href="tel:+51013249090"
+                className="inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white px-8 py-4 rounded-lg font-semibold transition-all border-2 border-white/30"
+              >
+                <Phone className="w-5 h-5" />
+                (+51) 01 324 90 90
+              </a>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* ========== PRODUCTOS DESTACADOS ========== */}
-      <div className="container mx-auto px-4 py-20">
-        <div className="text-center mb-16">
-          <h2 className="text-5xl font-extrabold mb-4">
-            <span className="bg-gradient-to-r from-[#C8102E] via-[#E91E8C] to-[#2E3192] bg-clip-text text-transparent">
-              Productos Destacados
-            </span>
-          </h2>
-          <p className="text-xl text-gray-600">
-            Los favoritos de nuestros clientes
+      {/* ========== CONFIANZA ========== */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-6 text-center">
+          <p className="text-gray-500 text-sm uppercase tracking-wider mb-8">
+            Confían en nosotros
           </p>
+          <div className="flex flex-wrap justify-center items-center gap-12 opacity-40">
+            <div className="text-3xl font-bold text-gray-600">Cliente 1</div>
+            <div className="text-3xl font-bold text-gray-600">Cliente 2</div>
+            <div className="text-3xl font-bold text-gray-600">Cliente 3</div>
+            <div className="text-3xl font-bold text-gray-600">Cliente 4</div>
+          </div>
         </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-          {featuredProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
-
-        <div className="text-center">
-          <Link
-            to="/products"
-            className="inline-flex items-center gap-2 bg-gradient-to-r from-[#C8102E] to-[#E91E8C] text-white px-10 py-5 rounded-full font-bold text-lg hover:shadow-2xl transition transform hover:scale-105"
-          >
-            <ShoppingBag className="w-6 h-6" />
-            Ver Todos los Productos
-          </Link>
-        </div>
-      </div>
-
-      {/* ========== LLAMADO A LA ACCIÓN ========== */}
-      <div className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-[#C8102E] via-[#E91E8C] to-[#2E3192]" />
-        <div className="absolute inset-0 opacity-10" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
-        }} />
-
-        <div className="relative container mx-auto px-4 py-20 text-center text-white">
-          <h2 className="text-5xl font-extrabold mb-6 drop-shadow-lg">
-            ¿Tienes un negocio de helados?
-          </h2>
-          <p className="text-2xl mb-10 max-w-3xl mx-auto drop-shadow-md">
-            Obtén precios especiales para compras al por mayor
-          </p>
-          <Link
-            to="/wholesale"
-            className="inline-flex items-center gap-3 bg-white text-[#C8102E] px-12 py-5 rounded-full font-bold text-xl hover:bg-gray-100 transition transform hover:scale-110 shadow-2xl"
-          >
-            <Package className="w-7 h-7" />
-            Solicitar Cotización Mayorista
-          </Link>
-        </div>
-      </div>
+      </section>
     </div>
   );
 };

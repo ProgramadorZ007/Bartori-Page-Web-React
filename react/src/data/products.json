@@ -3,52 +3,165 @@
     "id": 1,
     "name": "Barquirroll Clásico (Caja x 360 unidades)",
     "category": "barquillos",
-    "image": "/img-productos/barquirroll_clasico.png",
+    "image": "/barquillos/barquirroll_clasico.png", 
     "description": "Barquillos clásicos crocantes y deliciosos",
     "prices": {
       "Lambayeque": 55.00,
-      "Piura": 60.00,
-      "Chiclayo": 55.00,
-      "Trujillo": 58.00
+      "Piura": 60.00
     }
   },
   {
     "id": 2,
-    "name": "BARTORI Marmoleado CH-V (Caja x 360 unidades)",
+    "name": "Barquirroll Marmoleado Chocolate-Vainilla (Caja x 360 unidades)",
     "category": "barquillos",
-    "image": "/img-productos/chocolate.jpg",
+    "image": "/barquillos/barquirroll_marmoleado1.png", 
     "description": "Barquillos con delicioso marmoleado de chocolate y vainilla",
     "prices": {
       "Lambayeque": 55.00,
-      "Piura": 60.00,
-      "Chiclayo": 55.00,
-      "Trujillo": 58.00
+      "Piura": 60.00
     }
   },
   {
     "id": 3,
-    "name": "Base Waffle Grande (Caja x 200 unidades)",
-    "category": "bases",
-    "image": "/img-productos/barquilla.jpg",
-    "description": "Bases tipo waffle perfectas para helados artesanales",
+    "name": "Barquirroll Marmoleado Fresa-Vainilla (Caja x 360 unidades)",
+    "category": "barquillos",
+    "image": "/barquillos/barquirroll_marmoleado2.png", 
+    "description": "Barquillos con delicioso marmoleado de fresa y vainilla",
     "prices": {
       "Lambayeque": 45.00,
-      "Piura": 48.00,
-      "Chiclayo": 45.00,
-      "Trujillo": 47.00
+      "Piura": 48.00
     }
   },
   {
     "id": 4,
-    "name": "Base Cono Clásico (Caja x 300 unidades)",
+    "name": "Barquirroll Marmoleado Lúcuma-Chocolate (Caja x 360 unidades)",
+    "category": "barquillos",
+    "image": "/barquillos/barquirroll_marmoleado3.png", 
+    "description": "Barquillos con delicioso marmoleado de lúcuma y chocolate",
+    "prices": {
+      "Lambayeque": 45.00,
+      "Piura": 48.00
+    }
+  },
+  {
+    "id": 5,
+    "name": "Barquirroll Marmoleado Menta-Chocolate (Caja x 360 unidades)",
+    "category": "barquillos",
+    "image": "/barquillos/barquirroll_marmoleado4.png", 
+    "description": "Barquillos con delicioso marmoleado de menta y chocolate",
+    "prices": {
+      "Lambayeque": 45.00,
+      "Piura": 48.00
+    }
+  },
+  {
+    "id": 6,
+    "name": "Barquirroll Pack (Caja x 12 unidades)",
+    "category": "barquillos",
+    "image": "/barquillos/barquirroll_pack.png", 
+    "description": "Barquillos premium crocantes y deliciosos en caja de 12 unidades",
+    "prices": {
+      "Lambayeque": 45.00,
+      "Piura": 48.00
+    }
+  },
+  {
+    "id": 7,
+    "name": "Barquirroll Premium Chocolate (Caja x 360 unidades)",
+    "category": "barquillos",
+    "image": "/barquillos/barquirroll_premium_ch.png", 
+    "description": "Barquillos premium crocantes y deliciosos sabor chocolate",
+    "prices": {
+      "Lambayeque": 45.00,
+      "Piura": 48.00
+    }
+  },
+  {
+    "id": 8,
+    "name": "Barquirroll Premium (Caja x 360 unidades)",
+    "category": "barquillos",
+    "image": "/barquillos/barquirroll_premium.png", 
+    "description": "Barquillos premium crocantes y deliciosos sabor vainilla",
+    "prices": {
+      "Lambayeque": 45.00,
+      "Piura": 48.00
+    }
+  },
+  {
+    "id": 9,
+    "name": "Big Roll (Caja x 288 unidades)",
+    "category": "barquillos",
+    "image": "/barquillos/barquirroll_premium.png", 
+    "description": "Barquillos crocantes y deliciosos sabor vainilla",
+    "prices": {
+      "Lambayeque": 45.00,
+      "Piura": 48.00
+    }
+  },
+  {
+    "id": 100,
+    "name": "Base de Helado Sabor Chocolate",
     "category": "bases",
-    "image": "/img-productos/chocolate.jpg",
-    "description": "Conos clásicos crocantes para helado tradicional",
+    "image": "/bases/chocolate.png", 
+    "description": "Base en polvo y leche para preparar helado sabor chocolate",
     "prices": {
       "Lambayeque": 40.00,
-      "Piura": 43.00,
-      "Chiclayo": 40.00,
-      "Trujillo": 42.00
+      "Piura": 43.00
+    }
+  },
+  {
+    "id": 101,
+    "name": "Base de Helado Sabor Vainilla",
+    "category": "bases",
+    "image": "/bases/vainilla.png", 
+    "description": "Base en polvo y leche para preparar helado sabor vainilla",
+    "prices": {
+      "Lambayeque": 40.00,
+      "Piura": 43.00
+    }
+  },
+  {
+    "id": 102,
+    "name": "Base de Helado Sabor Fresa",
+    "category": "bases",
+    "image": "/bases/fresa.png", 
+    "description": "Base en polvo y leche para preparar helado sabor fresa",
+    "prices": {
+      "Lambayeque": 40.00,
+      "Piura": 43.00
+    }
+  },
+  {
+    "id": 103,
+    "name": "Base de Helado Sabor Lúcuma",
+    "category": "bases",
+    "image": "/bases/lucuma.png", 
+    "description": "Base en polvo y leche para preparar helado sabor lúcuma",
+    "prices": {
+      "Lambayeque": 40.00,
+      "Piura": 43.00
+    }
+  },
+  {
+    "id": 104,
+    "name": "Base de Helado Sabor Neutro",
+    "category": "bases",
+    "image": "/bases/neutro.png", 
+    "description": "Base en polvo y leche para preparar helado sabor neutro",
+    "prices": {
+      "Lambayeque": 40.00,
+      "Piura": 43.00
+    }
+  },
+  {
+    "id": 105,
+    "name": "Base de Helado Sabor Capuchino",
+    "category": "bases",
+    "image": "/bases/capuchino.png", 
+    "description": "Base en polvo y leche para preparar helado sabor capuchino",
+    "prices": {
+      "Lambayeque": 40.00,
+      "Piura": 43.00
     }
   }
 ]

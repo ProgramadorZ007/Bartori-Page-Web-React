@@ -31,17 +31,20 @@ export const ProductCard = ({ product }) => {
   };
 
   return (
-    <div className="border-2 border-gray-200 rounded-xl p-4 shadow-md w-full max-w-sm bg-white relative hover:shadow-2xl hover:border-[#E91E8C] transition-all">
+    <div className="border border-gray-200 rounded-xl p-5 bg-white relative hover:shadow-xl hover:border-[#D8992F] transition-all group">
       
       {/* IMAGEN */}
-      <div className="relative overflow-hidden rounded-lg mb-3">
+      <div className="relative overflow-hidden rounded-lg mb-4 bg-gray-100">
         <img 
           src={product.image} 
           alt={product.name} 
-          className="w-full h-48 object-cover transform hover:scale-110 transition-transform duration-300" 
+          className="w-full h-56 object-cover transform group-hover:scale-105 transition-transform duration-500" 
+          onError={(e) => {
+            e.target.src = 'https://via.placeholder.com/400x300?text=BARTORI';
+          }}
         />
         {isInCart && (
-          <div className="absolute top-2 right-2 bg-[#C8102E] text-white px-3 py-1 rounded-full text-xs font-bold">
+          <div className="absolute top-3 right-3 bg-[#C12423] text-white px-3 py-1.5 rounded-lg text-xs font-bold shadow-lg">
             En carrito
           </div>
         )}
