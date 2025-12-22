@@ -32,53 +32,53 @@ export const ProductCard = ({ product }) => {
   };
 
   return (
-    <div className="group relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 border border-gray-100">
+    <div className="group relative bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100">
       
       {/* IMAGEN */}
-      <div className="relative overflow-hidden bg-gray-50 h-56">
+      <div className="relative overflow-hidden bg-gray-50 h-44">
         <img 
           src={product.image} 
           alt={product.name} 
-          className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" 
+          className="w-full h-full object-contain p-4 transform group-hover:scale-105 transition-transform duration-300" 
           onError={(e) => {
             e.target.src = 'https://via.placeholder.com/400x300?text=BARTORI';
           }}
         />
         
         {isInCart && (
-          <div className="absolute top-3 right-3 bg-gradient-to-r from-[#322B80] to-[#C12423] text-white px-3 py-1.5 rounded-lg text-xs font-bold shadow-lg">
+          <div className="absolute top-2 right-2 bg-[#322B80] text-white px-2 py-1 rounded-lg text-xs font-bold shadow-lg">
             En carrito
           </div>
         )}
       </div>
 
       {/* CONTENIDO */}
-      <div className="p-5">
-        <h3 className="font-bold text-base mb-3 text-gray-800 line-clamp-2 min-h-[3rem] group-hover:text-[#322B80] transition-colors">
+      <div className="p-4">
+        <h3 className="font-bold text-sm mb-2 text-gray-800 line-clamp-2 min-h-[2.5rem] group-hover:text-[#322B80] transition-colors">
           {product.name}
         </h3>
 
         {/* PRECIO */}
-        <div className="mb-4">
+        <div className="mb-3">
           {region ? (
             <div className="flex items-baseline gap-2">
-              <span className="text-3xl font-bold text-gradient">S/ {price.toFixed(2)}</span>
+              <span className="text-2xl font-bold text-gradient">S/ {price.toFixed(2)}</span>
               <span className="text-xs text-gray-500">por caja</span>
             </div>
           ) : (
-            <p className="text-gray-400 text-sm italic">Selecciona región para ver precio</p>
+            <p className="text-gray-400 text-xs italic">Selecciona región para ver precio</p>
           )}
         </div>
 
         {/* CONTROLES */}
-        <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center justify-between mb-3">
           <span className="text-xs font-bold text-gray-600">Cantidad:</span>
           
           <div className="flex items-center gap-2">
             <button 
               disabled={isInCart}
               onClick={() => quantity > 1 && setQuantity(quantity - 1)} 
-              className="w-8 h-8 rounded-lg border-2 border-gray-200 hover:border-[#322B80] hover:bg-[#322B80] hover:text-white disabled:opacity-40 disabled:cursor-not-allowed font-bold transition-all"
+              className="w-7 h-7 rounded-lg border-2 border-gray-200 hover:border-[#322B80] hover:bg-[#322B80] hover:text-white disabled:opacity-40 disabled:cursor-not-allowed font-bold transition-all text-sm"
             >
               -
             </button>
@@ -91,14 +91,14 @@ export const ProductCard = ({ product }) => {
                 const val = parseInt(e.target.value) || 1;
                 if (val > 0) setQuantity(val);
               }}
-              className="w-14 text-center border-2 border-gray-200 rounded-lg py-1.5 font-bold text-sm focus:border-[#322B80] outline-none disabled:bg-gray-50"
+              className="w-12 text-center border-2 border-gray-200 rounded-lg py-1 font-bold text-sm focus:border-[#322B80] outline-none disabled:bg-gray-50"
               disabled={isInCart}
             />
 
             <button 
               disabled={isInCart}
               onClick={() => setQuantity(quantity + 1)} 
-              className="w-8 h-8 rounded-lg border-2 border-gray-200 hover:border-[#322B80] hover:bg-[#322B80] hover:text-white disabled:opacity-40 disabled:cursor-not-allowed font-bold transition-all"
+              className="w-7 h-7 rounded-lg border-2 border-gray-200 hover:border-[#322B80] hover:bg-[#322B80] hover:text-white disabled:opacity-40 disabled:cursor-not-allowed font-bold transition-all text-sm"
             >
               +
             </button>
@@ -109,14 +109,14 @@ export const ProductCard = ({ product }) => {
         {isInCart ? (
           <button 
             onClick={() => setShowModifyModal(true)}
-            className="w-full bg-white border-2 border-[#322B80] text-[#322B80] hover:bg-[#322B80] hover:text-white py-3 rounded-xl font-bold text-sm transition-all"
+            className="w-full bg-white border-2 border-[#322B80] text-[#322B80] hover:bg-[#322B80] hover:text-white py-2.5 rounded-lg font-bold text-sm transition-all"
           >
             Modificar Cantidad
           </button>
         ) : (
           <button 
             onClick={handleAddToCart}
-            className="w-full bg-gradient-to-r from-[#322B80] to-[#C12423] hover:shadow-xl text-white py-3 rounded-xl font-bold text-sm transition-all"
+            className="w-full bg-[#C12423] hover:bg-[#322B80] text-white py-2.5 rounded-lg font-bold text-sm transition-all shadow-md hover:shadow-lg"
           >
             Agregar al Carrito
           </button>
@@ -127,7 +127,7 @@ export const ProductCard = ({ product }) => {
       {showRegionModal && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-2xl shadow-2xl max-w-sm w-full">
-            <div className="bg-gradient-to-r from-[#322B80] to-[#C12423] p-6 text-white rounded-t-2xl">
+            <div className="bg-[#C12423] p-6 text-white rounded-t-2xl">
               <p className="font-bold text-xl">¡Atención!</p>
             </div>
             <div className="p-6">
@@ -136,7 +136,7 @@ export const ProductCard = ({ product }) => {
               </p>
               <button 
                 onClick={() => setShowRegionModal(false)} 
-                className="w-full bg-gradient-to-r from-[#322B80] to-[#C12423] hover:shadow-xl text-white px-6 py-3 rounded-xl transition-all font-bold"
+                className="w-full bg-[#C12423] hover:bg-[#322B80] text-white px-6 py-3 rounded-xl transition-all font-bold"
               >
                 Entendido
               </button>
@@ -202,9 +202,10 @@ const ModifyQuantityModal = ({ product, currentQty, price, onClose, onConfirm })
               type="number"
               value={newQty}
               onChange={(e) => {
-                const val = parseInt(e.target.value) || 0;
-                if (val >= 0) setNewQty(val);
+                const val = e.target.value === '' ? 0 : parseInt(e.target.value);
+                if (!isNaN(val) && val >= 0) setNewQty(val);
               }}
+              onFocus={(e) => e.target.select()}
               className="w-24 text-center text-4xl font-bold text-gradient border-2 border-gray-200 rounded-xl py-3 focus:border-[#322B80] outline-none"
             />
             
@@ -232,7 +233,7 @@ const ModifyQuantityModal = ({ product, currentQty, price, onClose, onConfirm })
               className={`flex-1 px-6 py-3 rounded-xl font-bold transition-all ${
                 newQty === 0 
                   ? 'bg-red-500 hover:bg-red-600 text-white' 
-                  : 'bg-gradient-to-r from-[#322B80] to-[#C12423] hover:shadow-xl text-white'
+                  : 'bg-[#C12423] hover:bg-[#322B80] text-white'
               }`}
             >
               {newQty === 0 ? "Eliminar" : "Actualizar"}
