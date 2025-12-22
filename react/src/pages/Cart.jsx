@@ -35,7 +35,7 @@ export const Cart = () => {
     message += `\n💰 *TOTAL: S/ ${total.toFixed(2)}*\n`;
     message += `\n_Esperamos su confirmación para proceder con el pedido._`;
 
-    const phoneNumber = '51999888777';
+    const phoneNumber = '51954153608';
     const encodedMessage = encodeURIComponent(message);
     const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
     
