@@ -27,7 +27,7 @@ export const Wholesale = () => {
 ${formData.message}
     `.trim();
 
-    const phoneNumber = '51999888777';
+    const phoneNumber = '51954153608';
     const encodedMessage = encodeURIComponent(whatsappMessage);
     const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
     

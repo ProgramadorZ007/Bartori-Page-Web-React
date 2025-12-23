@@ -56,7 +56,7 @@ export const Footer = () => {
                 <li className="flex items-center gap-3">
                   <Phone className="w-4 h-4 text-[#D8992F]" />
                   <span className="text-[#D8992F] font-semibold">
-                    Llámanos al: (+51) 01 324 90 90
+                    Llámanos al: (+51) 954 153 608
                   </span>
                 </li>
 

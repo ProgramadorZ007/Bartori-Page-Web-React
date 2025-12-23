@@ -15,7 +15,7 @@ export const AboutUs = () => {
           </div>
           <h1 className="text-5xl md:text-6xl font-bold mb-4">Sobre Nosotros</h1>
           <p className="text-xl text-white/80 max-w-2xl mx-auto">
-            Más de 25 años endulzando momentos con los mejores barquillos del Perú
+            Más de 20 años endulzando momentos con los mejores barquillos del Perú
           </p>
         </div>
       </div>
@@ -29,18 +29,15 @@ export const AboutUs = () => {
           
           <div className="bg-gradient-to-br from-gray-50 to-white p-10 rounded-3xl shadow-lg border border-gray-100 mb-12">
             <p className="text-gray-700 leading-relaxed mb-6 text-lg">
-              Fundada en 1995, Barquirroll nació con el sueño de ofrecer los mejores barquillos 
-              y conos para helado en todo el Perú. Lo que comenzó como un pequeño taller familiar 
-              en Chiclayo, se ha convertido en una de las empresas más reconocidas en la industria.
+              Somos los mejores distribuidores de BARTORI en la Zona Norte del Perú. Lo que comenzó como un pequeño negocio familiar en Lambayeque, se ha convertido en una de las empresas más reconocidas.
             </p>
             <p className="text-gray-700 leading-relaxed mb-6 text-lg">
-              A lo largo de estos años, hemos mantenido nuestro compromiso con la calidad, 
+              A lo largo de estos años, BARTORI ha mantenido su compromiso con la calidad, 
               utilizando siempre los mejores ingredientes y procesos de producción que garantizan 
               la frescura y el sabor inigualable de nuestros productos.
             </p>
             <p className="text-gray-700 leading-relaxed text-lg">
-              Hoy, orgullosamente servimos a cientos de negocios en todo el país, desde pequeñas 
-              heladerías hasta grandes cadenas de distribución, manteniendo siempre el mismo 
+              Hoy, orgullosamente servimos a cientos de negocios en toda la zona norte del Perú, desde pequeñas heladerías hasta grandes cadenas de distribución, manteniendo siempre el mismo 
               compromiso con la excelencia que nos caracterizó desde el primer día.
             </p>
           </div>
@@ -58,9 +55,8 @@ export const AboutUs = () => {
             <div className="bg-gradient-to-br from-[#D8992F] to-[#C12423] p-8 rounded-3xl text-white">
               <h2 className="text-3xl font-bold mb-4">Nuestra Visión</h2>
               <p className="leading-relaxed text-white/90">
-                Ser la empresa líder en la producción y distribución de barquillos y conos para 
-                helado en el Perú, expandiendo nuestra presencia a nivel latinoamericano, siendo 
-                reconocidos por nuestra calidad, innovación y compromiso con nuestros clientes.
+                Ser la empresa líder en la distribución de barquillos y conos para 
+                helado en la Zona Norte del Perú, siendo reconocidos por nuestra calidad, innovación y compromiso con nuestros clientes.
               </p>
             </div>
           </div>
@@ -129,10 +125,7 @@ export const AboutUs = () => {
           </h2>
           <div className="bg-gradient-to-br from-gray-50 to-white p-10 rounded-3xl shadow-lg border border-gray-100">
             <p className="text-gray-700 leading-relaxed text-lg">
-              Contamos con un equipo de profesionales apasionados y comprometidos, desde nuestros 
-              maestros panaderos con décadas de experiencia, hasta nuestro equipo de logística 
-              que garantiza entregas puntuales en todo el país. Cada miembro de Barquirroll 
-              trabaja con dedicación para mantener los más altos estándares de calidad.
+              Contamos con un equipo de profesionales apasionados y comprometidos. Nuestro equipo de logística garantiza entregas puntuales en toda la Zona Norte del Perú. Cada miembro del equipo trabaja con dedicación para mantener los más altos estándares de calidad.
             </p>
           </div>
         </div>

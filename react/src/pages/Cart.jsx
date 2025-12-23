@@ -1,14 +1,17 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Trash2, Plus, Minus, ShoppingCart, Send, MapPin, AlertCircle, X } from 'lucide-react';
+import { Trash2, Plus, Minus, ShoppingCart, Send, MapPin, AlertCircle, X, AlertTriangle } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useRegion } from '../context/RegionContext';
 
 export const Cart = () => {
   const { cartItems, updateCartItem, clearCart, getCartTotal } = useCart();
-  const { region, setRegion } = useRegion();
+  const { region } = useRegion();
   const [showRegionWarning, setShowRegionWarning] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [showClearCartModal, setShowClearCartModal] = useState(false);
+  const [showDeleteItemModal, setShowDeleteItemModal] = useState(false);
+  const [itemToDelete, setItemToDelete] = useState(null);
 
   const total = getCartTotal(region);
 
@@ -17,12 +20,10 @@ export const Cart = () => {
       setShowRegionWarning(true);
       return;
     }
-    // Mostrar el modal de confirmación
     setShowConfirmModal(true);
   };
 
   const confirmAndSend = () => {
-    // Construir mensaje de WhatsApp
     let message = `*🛒 NUEVO PEDIDO - BARTORI*\n\n`;
     message += `📍 *Región:* ${region}\n\n`;
     message += `*PRODUCTOS:*\n`;
@@ -45,16 +46,35 @@ export const Cart = () => {
     const encodedMessage = encodeURIComponent(message);
     const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
     
-    // Abrir WhatsApp
     window.open(whatsappURL, '_blank');
-    
-    // Cerrar el modal
     setShowConfirmModal(false);
   };
 
   const handleQuantityChange = (productId, newQuantity) => {
     if (newQuantity < 1) return;
     updateCartItem(productId, newQuantity);
+  };
+
+  const handleDeleteClick = (item) => {
+    setItemToDelete(item);
+    setShowDeleteItemModal(true);
+  };
+
+  const confirmDeleteItem = () => {
+    if (itemToDelete) {
+      updateCartItem(itemToDelete.id, 0);
+      setShowDeleteItemModal(false);
+      setItemToDelete(null);
+    }
+  };
+
+  const handleClearCartClick = () => {
+    setShowClearCartModal(true);
+  };
+
+  const confirmClearCart = () => {
+    clearCart();
+    setShowClearCartModal(false);
   };
 
   if (cartItems.length === 0) {
@@ -180,7 +200,7 @@ export const Cart = () => {
                           </div>
                         )}
                         <button
-                          onClick={() => updateCartItem(item.id, 0)}
+                          onClick={() => handleDeleteClick(item)}
                           className="flex items-center gap-2 text-red-600 hover:text-red-700 font-semibold transition"
                         >
                           <Trash2 className="w-4 h-4" />
@@ -194,7 +214,7 @@ export const Cart = () => {
             })}
 
             <button
-              onClick={clearCart}
+              onClick={handleClearCartClick}
               className="w-full py-4 text-red-600 hover:bg-red-50 rounded-xl font-bold transition-all border-2 border-red-200 hover:border-red-300"
             >
               Vaciar Carrito
@@ -344,6 +364,116 @@ export const Cart = () => {
                 >
                   <Send className="w-5 h-5" />
                   Confirmar y Enviar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Modal de confirmación - Eliminar producto */}
+      {showDeleteItemModal && itemToDelete && (
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl max-w-md w-full shadow-2xl">
+            <div className="border-b border-gray-100 p-6">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center">
+                  <AlertTriangle className="w-6 h-6 text-red-600" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-xl text-[#322B80]">Eliminar Producto</h3>
+                  <p className="text-gray-500 text-sm">Esta acción no se puede deshacer</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-6">
+              <div className="flex gap-4 mb-6 p-4 bg-gray-50 rounded-xl">
+                <img 
+                  src={itemToDelete.image} 
+                  className="w-20 h-20 object-cover rounded-xl"
+                  alt={itemToDelete.name}
+                />
+                <div className="flex-1">
+                  <p className="font-bold text-gray-800 mb-2 text-sm leading-tight">
+                    {itemToDelete.name}
+                  </p>
+                  <p className="text-gray-500 text-sm">
+                    Cantidad: {itemToDelete.quantity} {itemToDelete.quantity === 1 ? 'caja' : 'cajas'}
+                  </p>
+                </div>
+              </div>
+
+              <p className="text-gray-600 text-sm mb-6 text-center">
+                ¿Estás seguro que deseas eliminar este producto del carrito?
+              </p>
+
+              <div className="flex gap-3">
+                <button
+                  onClick={() => {
+                    setShowDeleteItemModal(false);
+                    setItemToDelete(null);
+                  }}
+                  className="flex-1 px-6 py-3 border-2 border-gray-300 text-gray-700 rounded-xl font-bold hover:bg-gray-50 transition"
+                >
+                  Cancelar
+                </button>
+                <button
+                  onClick={confirmDeleteItem}
+                  className="flex-1 px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-xl font-bold transition flex items-center justify-center gap-2"
+                >
+                  <Trash2 className="w-4 h-4" />
+                  Eliminar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Modal de confirmación - Vaciar carrito */}
+      {showClearCartModal && (
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl max-w-md w-full shadow-2xl">
+            <div className="border-b border-gray-100 p-6">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center">
+                  <AlertTriangle className="w-6 h-6 text-red-600" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-xl text-[#322B80]">Vaciar Carrito</h3>
+                  <p className="text-gray-500 text-sm">Esta acción eliminará todos los productos</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-6">
+              <div className="bg-red-50 border-l-4 border-red-500 p-4 mb-6 rounded-lg">
+                <p className="text-red-800 font-semibold mb-2">
+                  Se eliminarán {cartItems.length} {cartItems.length === 1 ? 'producto' : 'productos'}
+                </p>
+                <p className="text-red-700 text-sm">
+                  Perderás todos los productos que agregaste al carrito.
+                </p>
+              </div>
+
+              <p className="text-gray-600 text-sm mb-6 text-center">
+                ¿Estás seguro que deseas vaciar completamente tu carrito?
+              </p>
+
+              <div className="flex gap-3">
+                <button
+                  onClick={() => setShowClearCartModal(false)}
+                  className="flex-1 px-6 py-3 border-2 border-gray-300 text-gray-700 rounded-xl font-bold hover:bg-gray-50 transition"
+                >
+                  Cancelar
+                </button>
+                <button
+                  onClick={confirmClearCart}
+                  className="flex-1 px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-xl font-bold transition flex items-center justify-center gap-2"
+                >
+                  <Trash2 className="w-4 h-4" />
+                  Vaciar Todo
                 </button>
               </div>
             </div>

@@ -10,7 +10,7 @@ export const Home = () => {
   const slides = [
     {
       title: 'Excelencia en cada barquillo',
-      subtitle: 'Más de 25 años acompañando a los mejores heladeros del Perú',
+      subtitle: 'Más de 20 años acompañando a los mejores heladeros del Perú',
       cta: 'Ver productos',
       image: '/img/carrusel1.png'
     },
@@ -21,8 +21,8 @@ export const Home = () => {
       image: '/img/carrusel2.png'
     },
     {
-      title: 'Distribución a nivel nacional',
-      subtitle: 'Logística eficiente y entregas seguras',
+      title: 'Logística eficiente y entregas seguras',
+      subtitle: 'Distribución en toda la zona norte del Perú',
       cta: 'Cotizar ahora',
       image: '/img/carrusel3.png'
     }
@@ -66,7 +66,7 @@ export const Home = () => {
               <div className="max-w-2xl">
                 <div className="inline-block mb-4">
                   <span className="px-4 py-2 bg-[#D8992F] bg-opacity-20 backdrop-blur-sm text-[#D8992F] rounded-full text-sm font-semibold border border-[#D8992F] border-opacity-30">
-                    Bartori Perú
+                    Bartori Perú (Zona Norte)
                   </span>
                 </div>
                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6">
@@ -115,7 +115,7 @@ export const Home = () => {
       </section>
 
       {/* ================= PRODUCTOS ================= */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="mb-16 text-center">
             <div className="inline-flex items-center gap-2 mb-4">
@@ -172,7 +172,7 @@ export const Home = () => {
                 </div>
                 
                 <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-                  ¿Tienes un negocio de helados?
+                  ¿Tienes un negocio mayorista?
                 </h2>
                 
                 <p className="text-white opacity-80 text-lg mb-8 leading-relaxed">
@@ -189,18 +189,17 @@ export const Home = () => {
                   </Link>
                   
                   <a
-                    href="tel:+51013249090"
                     className="inline-flex items-center justify-center gap-2 bg-white bg-opacity-10 backdrop-blur-sm hover:bg-opacity-20 border-2 border-white border-opacity-30 text-white px-8 py-4 rounded-xl font-bold transition-all"
                   >
                     <Phone className="w-5 h-5" />
-                    <span>+51 01 324 9090</span>
+                    <span>(+51) 954 153 608</span>
                   </a>
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-6">
                 {[
-                  { number: '25+', label: 'Años de experiencia' },
+                  { number: '20+', label: 'Años de experiencia' },
                   { number: '1000+', label: 'Clientes satisfechos' },
                   { number: '24/7', label: 'Atención disponible' },
                   { number: '100%', label: 'Calidad garantizada' }
