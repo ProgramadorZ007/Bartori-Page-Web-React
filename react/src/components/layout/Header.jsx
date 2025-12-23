@@ -44,7 +44,7 @@ export const Header = () => {
                 <Link
                   key={link.to}
                   to={link.to}
-                  className="text-gray-700 font-medium text-base hover:text-[#C12423] relative group"
+                  className="text-gray-700 font-medium text-base hover:text-[#C12423] relative group transition-colors"
                 >
                   {link.label}
                   <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#C12423] transition-all group-hover:w-full"></span>
@@ -55,10 +55,10 @@ export const Header = () => {
             {/* CONTROLES */}
             <div className="flex items-center gap-3 justify-end">
 
-              {/* MAYORISTA (SECUNDARIO – OUTLINE) */}
+              {/* MAYORISTA */}
               <Link
                 to="/wholesale"
-                className="hidden xl:flex items-center gap-2 px-5 py-3 border-2 border-[#D8992F] text-[#322B80] rounded-lg font-semibold text-sm hover:bg-[#D8992F]/10 transition-all"
+                className="hidden xl:flex items-center gap-2 px-5 py-3 border-2 border-[#D8992F] text-[#322B80] rounded-lg font-semibold text-sm hover:bg-[#D8992F] hover:text-white transition-all"
               >
                 <Package className="w-5 h-5" />
                 Mayorista
@@ -75,18 +75,17 @@ export const Header = () => {
                 </span>
               </button>
 
-              {/* CARRITO (CTA PRINCIPAL) */}
+              {/* CARRITO */}
               <Link
                 to="/cart"
                 className="relative flex items-center gap-2 bg-[#C12423] hover:bg-[#322B80] text-white px-6 py-3 rounded-lg font-bold text-sm shadow-md transition-all"
               >
                 <ShoppingCart className="w-5 h-5" />
-                <span className="hidden md:inline">
-                  {getTotalItems() > 0 ? `Carrito (${getTotalItems()})` : 'Carrito'}
-                </span>
+                <span className="hidden md:inline">Carrito</span>
 
+                {/* BADGE DE CANTIDAD - CÍRCULO INFERIOR IZQUIERDO */}
                 {getTotalItems() > 0 && (
-                  <span className="md:hidden absolute -top-2 -right-2 bg-[#D8992F] text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center">
+                  <span className="absolute -bottom-1 -left-1 bg-[#D8992F] text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center border-2 border-white shadow-lg">
                     {getTotalItems()}
                   </span>
                 )}
@@ -148,10 +147,10 @@ export const Header = () => {
                 <button
                   key={r}
                   onClick={() => handleRegionSelect(r)}
-                  className={`p-5 rounded-xl border font-semibold transition-all ${
+                  className={`p-5 rounded-xl border-2 font-semibold transition-all ${
                     region === r
                       ? 'bg-[#C12423] text-white border-[#C12423]'
-                      : 'border-gray-300 hover:border-[#C12423]'
+                      : 'border-gray-300 hover:border-[#C12423] hover:bg-gray-50'
                   }`}
                 >
                   {r}

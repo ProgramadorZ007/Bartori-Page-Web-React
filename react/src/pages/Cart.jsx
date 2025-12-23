@@ -1,22 +1,28 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Trash2, Plus, Minus, ShoppingCart, Send, MapPin, AlertCircle } from 'lucide-react';
+import { Trash2, Plus, Minus, ShoppingCart, Send, MapPin, AlertCircle, X } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useRegion } from '../context/RegionContext';
 
 export const Cart = () => {
   const { cartItems, updateCartItem, clearCart, getCartTotal } = useCart();
-  const { region } = useRegion();
+  const { region, setRegion } = useRegion();
   const [showRegionWarning, setShowRegionWarning] = useState(false);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
 
   const total = getCartTotal(region);
 
-  const sendToWhatsApp = () => {
+  const handleSendClick = () => {
     if (!region) {
       setShowRegionWarning(true);
       return;
     }
+    // Mostrar el modal de confirmación
+    setShowConfirmModal(true);
+  };
 
+  const confirmAndSend = () => {
+    // Construir mensaje de WhatsApp
     let message = `*🛒 NUEVO PEDIDO - BARTORI*\n\n`;
     message += `📍 *Región:* ${region}\n\n`;
     message += `*PRODUCTOS:*\n`;
@@ -39,7 +45,11 @@ export const Cart = () => {
     const encodedMessage = encodeURIComponent(message);
     const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
     
+    // Abrir WhatsApp
     window.open(whatsappURL, '_blank');
+    
+    // Cerrar el modal
+    setShowConfirmModal(false);
   };
 
   const handleQuantityChange = (productId, newQuantity) => {
@@ -51,18 +61,18 @@ export const Cart = () => {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center py-20">
         <div className="text-center max-w-md px-4">
-          <div className="w-32 h-32 bg-gradient-to-br from-[#322B80] to-[#C12423] rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl">
+          <div className="w-32 h-32 bg-[#322B80] rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl">
             <ShoppingCart className="w-16 h-16 text-white" />
           </div>
-          <h2 className="text-4xl font-bold mb-4">
-            <span className="text-gradient">Tu carrito está vacío</span>
+          <h2 className="text-4xl font-bold mb-4 text-[#322B80]">
+            Tu carrito está vacío
           </h2>
           <p className="text-gray-600 mb-8 text-lg">
             ¡Agrega algunos productos deliciosos para empezar!
           </p>
           <Link
             to="/products"
-            className="inline-block bg-gradient-to-r from-[#322B80] to-[#C12423] text-white px-8 py-4 rounded-xl font-bold text-lg hover:shadow-xl transition transform hover:scale-105"
+            className="inline-block bg-[#322B80] hover:bg-[#C12423] text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg hover:shadow-xl"
           >
             Ver Productos
           </Link>
@@ -76,8 +86,8 @@ export const Cart = () => {
       <div className="container mx-auto px-6">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-5xl font-bold mb-2">
-            <span className="text-gradient">Mi Carrito</span>
+          <h1 className="text-5xl font-bold mb-2 text-[#322B80]">
+            Mi Carrito
           </h1>
           <p className="text-gray-600 text-lg">
             {cartItems.length} {cartItems.length === 1 ? 'producto' : 'productos'} en tu carrito
@@ -86,7 +96,7 @@ export const Cart = () => {
 
         {/* Alerta de región */}
         {!region && (
-          <div className="bg-gradient-to-r from-[#D8992F]/10 to-[#C12423]/10 border-l-4 border-[#D8992F] p-4 mb-6 rounded-xl">
+          <div className="bg-amber-50 border-l-4 border-[#D8992F] p-4 mb-6 rounded-xl">
             <div className="flex items-start gap-3">
               <AlertCircle className="w-6 h-6 text-[#D8992F] flex-shrink-0 mt-0.5" />
               <div>
@@ -128,7 +138,7 @@ export const Cart = () => {
                       </h3>
                       
                       {region ? (
-                        <p className="text-gradient font-bold text-2xl">
+                        <p className="text-[#322B80] font-bold text-2xl">
                           S/ {price.toFixed(2)} <span className="text-sm text-gray-500 font-normal">por caja</span>
                         </p>
                       ) : (
@@ -164,7 +174,7 @@ export const Cart = () => {
                         {region && (
                           <div className="text-xl">
                             <span className="text-gray-600 font-semibold">Subtotal: </span>
-                            <span className="font-bold text-gradient">
+                            <span className="font-bold text-[#322B80]">
                               S/ {subtotal.toFixed(2)}
                             </span>
                           </div>
@@ -216,12 +226,12 @@ export const Cart = () => {
 
                   <div className="flex justify-between text-3xl font-bold mb-6">
                     <span className="text-gray-700">Total</span>
-                    <span className="text-gradient">S/ {total.toFixed(2)}</span>
+                    <span className="text-[#322B80]">S/ {total.toFixed(2)}</span>
                   </div>
 
                   <button
-                    onClick={sendToWhatsApp}
-                    className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white py-4 rounded-xl font-bold text-lg transition shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+                    onClick={handleSendClick}
+                    className="w-full bg-green-600 hover:bg-green-700 text-white py-4 rounded-xl font-bold text-lg transition shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
                   >
                     <Send className="w-5 h-5" />
                     Enviar por WhatsApp
@@ -244,7 +254,7 @@ export const Cart = () => {
         </div>
       </div>
 
-      {/* Modal de advertencia */}
+      {/* Modal de advertencia - sin región */}
       {showRegionWarning && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-2xl p-8 max-w-md shadow-2xl">
@@ -260,10 +270,82 @@ export const Cart = () => {
               </p>
               <button
                 onClick={() => setShowRegionWarning(false)}
-                className="w-full bg-gradient-to-r from-[#322B80] to-[#C12423] text-white py-3 rounded-xl font-bold hover:shadow-xl transition"
+                className="w-full bg-[#322B80] hover:bg-[#C12423] text-white py-3 rounded-xl font-bold transition"
               >
                 Entendido
               </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Modal de confirmación - con región */}
+      {showConfirmModal && region && (
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl max-w-lg w-full shadow-2xl">
+            <div className="border-b border-gray-100 p-6 flex justify-between items-center">
+              <div>
+                <h3 className="font-bold text-2xl text-[#322B80]">Confirmar Pedido</h3>
+                <p className="text-gray-500 text-sm mt-1">Verifica los datos antes de enviar</p>
+              </div>
+              <button 
+                onClick={() => setShowConfirmModal(false)} 
+                className="text-gray-400 hover:text-gray-600 transition"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+
+            <div className="p-6">
+              <div className="bg-amber-50 border-l-4 border-[#D8992F] p-4 mb-6 rounded-lg">
+                <div className="flex items-start gap-3">
+                  <MapPin className="w-6 h-6 text-[#D8992F] flex-shrink-0 mt-0.5" />
+                  <div className="flex-1">
+                    <p className="font-bold text-[#322B80] mb-1">
+                      Tu región seleccionada es:
+                    </p>
+                    <p className="text-2xl font-bold text-[#322B80]">
+                      {region}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-gray-50 rounded-xl p-4 mb-6">
+                <h4 className="font-bold text-gray-700 mb-3">Resumen del pedido:</h4>
+                <div className="space-y-2 text-sm">
+                  {cartItems.map((item, index) => (
+                    <div key={item.id} className="flex justify-between text-gray-600">
+                      <span>{index + 1}. {item.name.substring(0, 30)}...</span>
+                      <span className="font-semibold">{item.quantity}x</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="border-t mt-3 pt-3 flex justify-between items-center">
+                  <span className="font-bold text-gray-700">Total:</span>
+                  <span className="text-2xl font-bold text-[#322B80]">S/ {total.toFixed(2)}</span>
+                </div>
+              </div>
+
+              <p className="text-gray-600 text-sm mb-6 text-center">
+                ¿La región es correcta? Si necesitas cambiarla, cancela y selecciónala en el header.
+              </p>
+
+              <div className="flex gap-3">
+                <button
+                  onClick={() => setShowConfirmModal(false)}
+                  className="flex-1 px-6 py-3 border-2 border-gray-300 text-gray-700 rounded-xl font-bold hover:bg-gray-50 transition"
+                >
+                  Cambiar Región
+                </button>
+                <button
+                  onClick={confirmAndSend}
+                  className="flex-1 px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-xl font-bold transition flex items-center justify-center gap-2"
+                >
+                  <Send className="w-5 h-5" />
+                  Confirmar y Enviar
+                </button>
+              </div>
             </div>
           </div>
         </div>

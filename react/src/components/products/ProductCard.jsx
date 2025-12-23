@@ -62,7 +62,7 @@ export const ProductCard = ({ product }) => {
         <div className="mb-3">
           {region ? (
             <div className="flex items-baseline gap-2">
-              <span className="text-2xl font-bold text-gradient">S/ {price.toFixed(2)}</span>
+              <span className="text-2xl font-bold text-[#322B80]">S/ {price.toFixed(2)}</span>
               <span className="text-xs text-gray-500">por caja</span>
             </div>
           ) : (
@@ -185,7 +185,7 @@ const ModifyQuantityModal = ({ product, currentQty, price, onClose, onConfirm })
             />
             <div className="flex-1">
               <p className="font-bold text-gray-800 mb-2 text-sm leading-tight">{product.name}</p>
-              <p className="text-gradient font-bold text-xl">S/ {price.toFixed(2)}</p>
+              <p className="text-[#322B80] font-bold text-xl">S/ {price.toFixed(2)}</p>
               <p className="text-xs text-gray-500 mt-1">Actual: {currentQty}</p>
             </div>
           </div>
@@ -206,7 +206,7 @@ const ModifyQuantityModal = ({ product, currentQty, price, onClose, onConfirm })
                 if (!isNaN(val) && val >= 0) setNewQty(val);
               }}
               onFocus={(e) => e.target.select()}
-              className="w-24 text-center text-4xl font-bold text-gradient border-2 border-gray-200 rounded-xl py-3 focus:border-[#322B80] outline-none"
+              className="w-24 text-center text-4xl font-bold text-[#322B80] border-2 border-gray-200 rounded-xl py-3 focus:border-[#322B80] outline-none"
             />
             
             <button 

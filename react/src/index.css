@@ -40,19 +40,14 @@
     animation: fadeIn 1s ease-in 0.3s both;
   }
 
-  .gradient-primary {
-    background: linear-gradient(135deg, #322B80 0%, #C12423 100%);
+  /* Clase para ocultar scrollbar en móviles */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 
-  .gradient-accent {
-    background: linear-gradient(135deg, #D8992F 0%, #C12423 100%);
-  }
-
-  .text-gradient {
-    background: linear-gradient(135deg, #322B80 0%, #C12423 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
   }
 }
 

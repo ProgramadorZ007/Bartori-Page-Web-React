@@ -65,19 +65,19 @@ export const Home = () => {
             <div className="relative h-full max-w-7xl mx-auto px-6 md:px-12 flex items-center">
               <div className="max-w-2xl">
                 <div className="inline-block mb-4">
-                  <span className="px-4 py-2 bg-[#D8992F]/20 backdrop-blur-sm text-[#D8992F] rounded-full text-sm font-semibold border border-[#D8992F]/30">
+                  <span className="px-4 py-2 bg-[#D8992F] bg-opacity-20 backdrop-blur-sm text-[#D8992F] rounded-full text-sm font-semibold border border-[#D8992F] border-opacity-30">
                     Bartori Perú
                   </span>
                 </div>
                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6">
                   {slide.title}
                 </h1>
-                <p className="text-xl md:text-2xl text-white/90 mb-8 leading-relaxed">
+                <p className="text-xl md:text-2xl text-white opacity-90 mb-8 leading-relaxed">
                   {slide.subtitle}
                 </p>
                 <Link
                   to="/products"
-                  className="inline-flex items-center gap-3 bg-gradient-to-r from-[#D8992F] to-[#C12423] hover:shadow-2xl text-white px-8 py-4 rounded-xl font-bold text-lg transition-all transform hover:scale-105"
+                  className="inline-flex items-center gap-3 bg-[#D8992F] hover:bg-[#C12423] text-white px-8 py-4 rounded-xl font-bold text-lg transition-all transform hover:scale-105 shadow-xl"
                 >
                   {slide.cta}
                   <ArrowRight className="w-5 h-5" />
@@ -89,14 +89,14 @@ export const Home = () => {
 
         <button
           onClick={prevSlide}
-          className="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-xl flex items-center justify-center transition-all"
+          className="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 bg-white bg-opacity-20 hover:bg-opacity-30 backdrop-blur-sm rounded-xl flex items-center justify-center transition-all"
         >
           <ChevronLeft className="w-6 h-6 text-white" />
         </button>
 
         <button
           onClick={nextSlide}
-          className="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-xl flex items-center justify-center transition-all"
+          className="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 bg-white bg-opacity-20 hover:bg-opacity-30 backdrop-blur-sm rounded-xl flex items-center justify-center transition-all"
         >
           <ChevronRight className="w-6 h-6 text-white" />
         </button>
@@ -107,7 +107,7 @@ export const Home = () => {
               key={i}
               onClick={() => setCurrentSlide(i)}
               className={`h-1.5 rounded-full transition-all ${
-                i === currentSlide ? 'w-12 bg-white' : 'w-6 bg-white/40'
+                i === currentSlide ? 'w-12 bg-white' : 'w-6 bg-white bg-opacity-40'
               }`}
             />
           ))}
@@ -119,14 +119,14 @@ export const Home = () => {
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="mb-16 text-center">
             <div className="inline-flex items-center gap-2 mb-4">
-              <div className="w-8 h-0.5 bg-gradient-to-r from-[#322B80] to-[#C12423]"></div>
+              <div className="w-8 h-0.5 bg-[#322B80]"></div>
               <span className="text-[#D8992F] font-bold uppercase tracking-wider text-sm">
                 Lo mejor de Bartori
               </span>
-              <div className="w-8 h-0.5 bg-gradient-to-r from-[#C12423] to-[#322B80]"></div>
+              <div className="w-8 h-0.5 bg-[#322B80]"></div>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="text-gradient">Productos Destacados</span>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-[#322B80]">
+              Productos Destacados
             </h2>
             <p className="text-gray-600 text-lg max-w-2xl mx-auto">
               Barquillos y conos diseñados para realzar cada experiencia
@@ -142,7 +142,7 @@ export const Home = () => {
           <div className="text-center">
             <Link
               to="/products"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-[#322B80] to-[#C12423] hover:shadow-xl text-white px-8 py-4 rounded-xl font-bold text-lg transition-all transform hover:scale-105"
+              className="inline-flex items-center gap-2 bg-[#322B80] hover:bg-[#C12423] text-white px-8 py-4 rounded-xl font-bold text-lg transition-all transform hover:scale-105 shadow-lg"
             >
               Ver catálogo completo
               <ArrowRight className="w-5 h-5" />
@@ -154,7 +154,7 @@ export const Home = () => {
       {/* ================= MAYORISTA ================= */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="relative overflow-hidden bg-gradient-to-br from-[#322B80] via-[#2d2670] to-[#1a1648] rounded-3xl shadow-2xl">
+          <div className="relative overflow-hidden bg-[#322B80] rounded-3xl shadow-2xl">
             
             <div className="absolute inset-0 opacity-10">
               <div className="absolute inset-0" style={{
@@ -164,7 +164,7 @@ export const Home = () => {
 
             <div className="relative grid md:grid-cols-2 gap-12 p-12 md:p-16 items-center">
               <div className="text-white">
-                <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6 border border-white/20">
+                <div className="inline-flex items-center gap-2 bg-white bg-opacity-10 backdrop-blur-sm px-4 py-2 rounded-full mb-6 border border-white border-opacity-20">
                   <Package className="w-4 h-4 text-[#D8992F]" />
                   <span className="text-[#D8992F] font-semibold text-sm">
                     Precios especiales
@@ -175,14 +175,14 @@ export const Home = () => {
                   ¿Tienes un negocio de helados?
                 </h2>
                 
-                <p className="text-white/80 text-lg mb-8 leading-relaxed">
+                <p className="text-white opacity-80 text-lg mb-8 leading-relaxed">
                   Accede a condiciones preferenciales, descuentos por volumen y atención personalizada para hacer crecer tu negocio.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link
                     to="/wholesale"
-                    className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#D8992F] to-[#C12423] hover:shadow-2xl text-white px-8 py-4 rounded-xl font-bold transition-all transform hover:scale-105"
+                    className="inline-flex items-center justify-center gap-2 bg-[#D8992F] hover:bg-[#C12423] text-white px-8 py-4 rounded-xl font-bold transition-all transform hover:scale-105 shadow-lg"
                   >
                     Solicitar cotización
                     <ArrowRight className="w-5 h-5" />
@@ -190,7 +190,7 @@ export const Home = () => {
                   
                   <a
                     href="tel:+51013249090"
-                    className="inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur-sm hover:bg-white/20 border-2 border-white/30 text-white px-8 py-4 rounded-xl font-bold transition-all"
+                    className="inline-flex items-center justify-center gap-2 bg-white bg-opacity-10 backdrop-blur-sm hover:bg-opacity-20 border-2 border-white border-opacity-30 text-white px-8 py-4 rounded-xl font-bold transition-all"
                   >
                     <Phone className="w-5 h-5" />
                     <span>+51 01 324 9090</span>
@@ -207,12 +207,12 @@ export const Home = () => {
                 ].map((stat, i) => (
                   <div 
                     key={i} 
-                    className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center hover:bg-white/20 transition-all"
+                    className="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-6 border border-white border-opacity-20 text-center hover:bg-opacity-20 transition-all"
                   >
                     <div className="text-4xl font-bold text-white mb-2">
                       {stat.number}
                     </div>
-                    <div className="text-white/70 text-sm font-medium">
+                    <div className="text-white opacity-70 text-sm font-medium">
                       {stat.label}
                     </div>
                   </div>
