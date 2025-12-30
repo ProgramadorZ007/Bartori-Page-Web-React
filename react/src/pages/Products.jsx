@@ -24,32 +24,32 @@ export const Products = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* HERO */}
-      <div className="bg-[#322B80] text-white py-16">
-        <div className="container mx-auto px-6 text-center">
-          <div className="inline-flex items-center gap-2 mb-3">
-            <div className="w-8 h-0.5 bg-[#D8992F]"></div>
-            <span className="text-[#D8992F] font-bold uppercase tracking-wider text-sm">
+      <div className="bg-[#322B80] text-white py-10 sm:py-12 md:py-16">
+        <div className="container mx-auto px-4 sm:px-6 text-center">
+          <div className="inline-flex items-center gap-1.5 sm:gap-2 mb-2 sm:mb-3">
+            <div className="w-6 sm:w-8 h-0.5 bg-[#D8992F]"></div>
+            <span className="text-[#D8992F] font-bold uppercase tracking-wider text-xs sm:text-sm">
               Catálogo completo
             </span>
-            <div className="w-8 h-0.5 bg-[#D8992F]"></div>
+            <div className="w-6 sm:w-8 h-0.5 bg-[#D8992F]"></div>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-3">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 sm:mb-3">
             Nuestros Productos
           </h1>
-          <p className="text-lg text-white/80 max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base md:text-lg text-white/80 max-w-2xl mx-auto px-4">
             Barquillos y bases de la más alta calidad para tu negocio
           </p>
         </div>
       </div>
 
       {/* CONTENEDOR PRINCIPAL */}
-      <div className="container mx-auto px-6 py-8 mt-4">
-        <div className="flex gap-8">
+      <div className="container mx-auto px-3 sm:px-4 md:px-6 py-6 sm:py-8 mt-2 sm:mt-4">
+        <div className="flex gap-4 sm:gap-6 md:gap-8">
           
-          {/* SIDEBAR FILTROS */}
-          <aside className="hidden lg:block w-64 flex-shrink-0">
-            <div className="sticky top-24 bg-white rounded-xl shadow-md p-6 border border-gray-100">
-              <h2 className="text-xl font-bold text-[#322B80] mb-4">
+          {/* SIDEBAR FILTROS - Solo desktop */}
+          <aside className="hidden lg:block w-56 xl:w-64 flex-shrink-0">
+            <div className="sticky top-24 bg-white rounded-xl shadow-md p-5 xl:p-6 border border-gray-100">
+              <h2 className="text-lg xl:text-xl font-bold text-[#322B80] mb-4">
                 Categorías
               </h2>
               <div className="space-y-2">
@@ -57,7 +57,7 @@ export const Products = () => {
                   <button
                     key={category.id}
                     onClick={() => setActiveCategory(category.id)}
-                    className={`w-full text-left px-4 py-3 rounded-lg font-semibold text-sm transition-all ${
+                    className={`w-full text-left px-3 xl:px-4 py-2.5 xl:py-3 rounded-lg font-semibold text-sm transition-all ${
                       activeCategory === category.id
                         ? 'bg-[#322B80] text-white shadow-md'
                         : 'bg-gray-50 text-gray-700 hover:bg-gray-100'
@@ -79,54 +79,58 @@ export const Products = () => {
             </div>
           </aside>
 
-          {/* FILTROS MÓVILES */}
-          <div className="lg:hidden w-full mb-6">
-            <div className="bg-white rounded-xl shadow-md p-4 border border-gray-100">
-              <div className="flex gap-2 overflow-x-auto pb-2">
-                {categories.map((category) => (
-                  <button
-                    key={category.id}
-                    onClick={() => setActiveCategory(category.id)}
-                    className={`flex-shrink-0 px-4 py-2 rounded-lg font-semibold text-sm transition-all ${
-                      activeCategory === category.id
-                        ? 'bg-[#322B80] text-white'
-                        : 'bg-gray-50 text-gray-700'
-                    }`}
-                  >
-                    {category.label}
-                    <span className={`ml-2 px-2 py-0.5 rounded-full text-xs font-bold ${
-                      activeCategory === category.id
-                        ? 'bg-white/20'
-                        : 'bg-gray-200'
-                    }`}>
-                      {category.count}
-                    </span>
-                  </button>
-                ))}
+          {/* CONTENIDO PRINCIPAL */}
+          <div className="flex-1 min-w-0">
+            
+            {/* FILTROS MÓVILES */}
+            <div className="lg:hidden w-full mb-4 sm:mb-6">
+              <div className="bg-white rounded-lg sm:rounded-xl shadow-md p-3 sm:p-4 border border-gray-100">
+                <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+                  {categories.map((category) => (
+                    <button
+                      key={category.id}
+                      onClick={() => setActiveCategory(category.id)}
+                      className={`flex-shrink-0 px-3 sm:px-4 py-2 rounded-lg font-semibold text-xs sm:text-sm transition-all whitespace-nowrap ${
+                        activeCategory === category.id
+                          ? 'bg-[#322B80] text-white'
+                          : 'bg-gray-50 text-gray-700'
+                      }`}
+                    >
+                      {category.label}
+                      <span className={`ml-1.5 sm:ml-2 px-1.5 sm:px-2 py-0.5 rounded-full text-[10px] sm:text-xs font-bold ${
+                        activeCategory === category.id
+                          ? 'bg-white/20'
+                          : 'bg-gray-200'
+                      }`}>
+                        {category.count}
+                      </span>
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* PRODUCTOS */}
-          <div className="flex-1">
-            <div className="mb-6">
-              <h2 className="text-2xl font-bold text-[#322B80]">
+            {/* HEADER DE PRODUCTOS */}
+            <div className="mb-4 sm:mb-6">
+              <h2 className="text-xl sm:text-2xl font-bold text-[#322B80]">
                 {categories.find(c => c.id === activeCategory)?.label}
-                <span className="text-gray-400 ml-3 font-normal text-lg">
+                <span className="text-gray-400 ml-2 sm:ml-3 font-normal text-base sm:text-lg">
                   ({filteredProducts.length} {filteredProducts.length === 1 ? 'producto' : 'productos'})
                 </span>
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {/* GRID DE PRODUCTOS */}
+            <div className="grid grid-cols-1 min-[450px]:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
               {filteredProducts.map((product) => (
                 <ProductCard key={product.id} product={product} />
               ))}
             </div>
 
+            {/* EMPTY STATE */}
             {filteredProducts.length === 0 && (
-              <div className="text-center py-20">
-                <p className="text-gray-500 text-xl">No hay productos en esta categoría</p>
+              <div className="text-center py-16 sm:py-20">
+                <p className="text-gray-500 text-lg sm:text-xl">No hay productos en esta categoría</p>
               </div>
             )}
           </div>
