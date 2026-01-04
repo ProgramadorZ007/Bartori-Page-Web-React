@@ -132,7 +132,7 @@ export const ProductCard = ({ product }) => {
             </div>
             <div className="p-6">
               <p className="text-gray-700 mb-6 leading-relaxed">
-                Primero debes seleccionar tu región en el header para ver los precios y agregar productos.
+                Primero debes seleccionar tu región la parte superior de la página para ver los precios y agregar productos.
               </p>
               <button 
                 onClick={() => setShowRegionModal(false)} 

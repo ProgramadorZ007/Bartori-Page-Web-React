@@ -7,7 +7,7 @@
     "description": "Barquillos clásicos crocantes y deliciosos",
     "prices": {
       "Lambayeque": 54.00,
-      "Piura": 10.00
+      "Piura": 57.00
     }
   },
   {
@@ -18,7 +18,7 @@
     "description": "Barquillos con delicioso marmoleado de chocolate y vainilla",
     "prices": {
       "Lambayeque": 55.00,
-      "Piura": 10.00
+      "Piura": 58.00
     }
   },
   {
@@ -29,7 +29,7 @@
     "description": "Barquillos con delicioso marmoleado de fresa y vainilla",
     "prices": {
       "Lambayeque": 55.00,
-      "Piura": 10.00
+      "Piura": 58.00
     }
   },
   {
@@ -40,7 +40,7 @@
     "description": "Barquillos con delicioso marmoleado de lúcuma y chocolate",
     "prices": {
       "Lambayeque": 55.00,
-      "Piura": 10.00
+      "Piura": 58.00
     }
   },
   {
@@ -51,7 +51,7 @@
     "description": "Barquillos con delicioso marmoleado de menta y chocolate",
     "prices": {
       "Lambayeque": 55.00,
-      "Piura": 10.00
+      "Piura": 58.00
     }
   },
   {
@@ -62,7 +62,7 @@
     "description": "Barquillos premium crocantes y deliciosos en caja de 12 unidades",
     "prices": {
       "Lambayeque": 3.00,
-      "Piura": 10.00
+      "Piura": 5.00
     }
   },
   {
@@ -73,7 +73,7 @@
     "description": "Barquillos premium crocantes y deliciosos sabor chocolate",
     "prices": {
       "Lambayeque": 55.00,
-      "Piura": 10.00
+      "Piura": 58.00
     }
   },
   {
@@ -84,7 +84,7 @@
     "description": "Barquillos premium crocantes y deliciosos sabor vainilla",
     "prices": {
       "Lambayeque": 53.00,
-      "Piura": 10.00
+      "Piura": 56.00
     }
   },
   {
@@ -94,8 +94,8 @@
     "image": "/barquillos/big_roll.png", 
     "description": "Barquillos crocantes y deliciosos sabor vainilla",
     "prices": {
-      "Lambayeque": 60.00,
-      "Piura": 10.00
+      "Lambayeque": 80.00,
+      "Piura": 83.00
     }
   },
   {
@@ -106,7 +106,7 @@
     "description": "...",
     "prices": {
       "Lambayeque": 63.00,
-      "Piura": 10.00
+      "Piura": 66.00
     }
   },
   {
@@ -117,7 +117,7 @@
     "description": "...",
     "prices": {
       "Lambayeque": 20.00,
-      "Piura": 10.00
+      "Piura": 23.00
     }
   },
   {
@@ -128,7 +128,7 @@
     "description": "...",
     "prices": {
       "Lambayeque": 38.00,
-      "Piura": 10.00
+      "Piura": 41.00
     }
   },
   {
@@ -139,7 +139,7 @@
     "description": "...",
     "prices": {
       "Lambayeque": 40.00,
-      "Piura": 10.00
+      "Piura": 43.00
     }
   },
   {
@@ -150,7 +150,7 @@
     "description": "...",
     "prices": {
       "Lambayeque": 40.00,
-      "Piura": 10.00
+      "Piura": 43.00
     }
   },
   {
@@ -161,7 +161,7 @@
     "description": "...",
     "prices": {
       "Lambayeque": 42.00,
-      "Piura": 10.00
+      "Piura": 45.00
     }
   },
   {
@@ -171,8 +171,8 @@
     "image": "/barquillos/megacono_chocolate.png", 
     "description": "...",
     "prices": {
-      "Lambayeque": 23.00,
-      "Piura": 10.00
+      "Lambayeque": 22.00,
+      "Piura": 25.00
     }
   },
   {
@@ -183,7 +183,7 @@
     "description": "...",
     "prices": {
       "Lambayeque": 20.00,
-      "Piura": 10.00
+      "Piura": 23.00
     }
   },
   {
@@ -194,7 +194,7 @@
     "description": "...",
     "prices": {
       "Lambayeque": 45.00,
-      "Piura": 10.00
+      "Piura": 48.00
     }
   },
   {
@@ -205,7 +205,7 @@
     "description": "...",
     "prices": {
       "Lambayeque": 45.00,
-      "Piura": 10.00
+      "Piura": 48.00
     }
   },
   {
@@ -216,7 +216,7 @@
     "description": "...",
     "prices": {
       "Lambayeque": 45.00,
-      "Piura": 10.00
+      "Piura": 48.00
     }
   },
   {
@@ -227,7 +227,7 @@
     "description": "...",
     "prices": {
       "Lambayeque": 12.00,
-      "Piura": 10.00
+      "Piura": 15.00
     }
   },
   {
@@ -238,7 +238,7 @@
     "description": "...",
     "prices": {
       "Lambayeque": 12.00,
-      "Piura": 10.00
+      "Piura": 15.00
     }
   },
   {
@@ -249,7 +249,7 @@
     "description": "...",
     "prices": {
       "Lambayeque": 33.00,
-      "Piura": 10.00
+      "Piura": 36.00
     }
   },
   {
@@ -260,7 +260,7 @@
     "description": "...",
     "prices": {
       "Lambayeque": 40.00,
-      "Piura": 10.00
+      "Piura": 43.00
     }
   },
   {
@@ -271,7 +271,18 @@
     "description": "...",
     "prices": {
       "Lambayeque": 29.00,
-      "Piura": 10.00
+      "Piura": 32.00
+    }
+  },
+  {
+    "id": 26,
+    "name": "Pececito (Caja x 48 unidades)",
+    "category": "barquillos",
+    "image": "/barquillos/pececito.png", 
+    "description": "...",
+    "prices": {
+      "Lambayeque": 9.00,
+      "Piura": 12.00
     }
   },
   {
@@ -281,8 +292,8 @@
     "image": "/bases/chocolate.png", 
     "description": "Base en polvo y leche para preparar helado sabor chocolate",
     "prices": {
-      "Lambayeque": 40.00,
-      "Piura": 43.00
+      "Lambayeque": 23.00,
+      "Piura": 23.00
     }
   },
   {
@@ -292,8 +303,8 @@
     "image": "/bases/vainilla.png", 
     "description": "Base en polvo y leche para preparar helado sabor vainilla",
     "prices": {
-      "Lambayeque": 40.00,
-      "Piura": 43.00
+      "Lambayeque": 22.00,
+      "Piura": 22.00
     }
   },
   {
@@ -303,8 +314,8 @@
     "image": "/bases/fresa.png", 
     "description": "Base en polvo y leche para preparar helado sabor fresa",
     "prices": {
-      "Lambayeque": 40.00,
-      "Piura": 43.00
+      "Lambayeque": 22.00,
+      "Piura": 22.00
     }
   },
   {
@@ -314,8 +325,8 @@
     "image": "/bases/lucuma.png", 
     "description": "Base en polvo y leche para preparar helado sabor lúcuma",
     "prices": {
-      "Lambayeque": 40.00,
-      "Piura": 43.00
+      "Lambayeque": 22.00,
+      "Piura": 22.00
     }
   },
   {
@@ -325,8 +336,8 @@
     "image": "/bases/neutro.png", 
     "description": "Base en polvo y leche para preparar helado sabor neutro",
     "prices": {
-      "Lambayeque": 40.00,
-      "Piura": 43.00
+      "Lambayeque": 22.00,
+      "Piura": 22.00
     }
   },
   {
@@ -336,8 +347,8 @@
     "image": "/bases/capuchino.png", 
     "description": "Base en polvo y leche para preparar helado sabor capuchino",
     "prices": {
-      "Lambayeque": 40.00,
-      "Piura": 43.00
+      "Lambayeque": 22.00,
+      "Piura": 22.00
     }
   }
 ]
