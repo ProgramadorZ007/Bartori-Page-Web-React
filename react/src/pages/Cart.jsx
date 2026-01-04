@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Trash2, Plus, Minus, ShoppingCart, Send, MapPin, AlertCircle, X, AlertTriangle } from 'lucide-react';
+import { Trash2, Plus, Minus, ShoppingCart, Send, MapPin, AlertCircle, X, AlertTriangle, Package } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useRegion } from '../context/RegionContext';
 
 export const Cart = () => {
-  const { cartItems, updateCartItem, clearCart, getCartTotal } = useCart();
+  const { cartItems, updateCartItem, clearCart } = useCart();
   const { region } = useRegion();
   const [showRegionWarning, setShowRegionWarning] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
@@ -13,7 +13,36 @@ export const Cart = () => {
   const [showDeleteItemModal, setShowDeleteItemModal] = useState(false);
   const [itemToDelete, setItemToDelete] = useState(null);
 
-  const total = getCartTotal(region);
+  // ============= LÓGICA DE DESCUENTO EN BASES =============
+  // Calcular total de unidades de bases
+  const totalBasesUnits = cartItems
+    .filter(item => item.category === 'bases')
+    .reduce((sum, item) => sum + item.quantity, 0);
+
+  // Verificar si aplica descuento (≥15 bases)
+  const applyBasesDiscount = totalBasesUnits >= 15;
+
+  // Función para obtener el precio con descuento si aplica
+  const getPriceWithDiscount = (item) => {
+    if (!region) return 0;
+    const basePrice = item.prices[region];
+    if (item.category === 'bases' && applyBasesDiscount) {
+      return basePrice - 1;
+    }
+    return basePrice;
+  };
+
+  // Calcular total con descuento aplicado
+  const calculateTotal = () => {
+    if (!region) return 0;
+    return cartItems.reduce((total, item) => {
+      const price = getPriceWithDiscount(item);
+      return total + (price * item.quantity);
+    }, 0);
+  };
+
+  const total = calculateTotal();
+  // ============= FIN LÓGICA DE DESCUENTO =============
 
   const handleSendClick = () => {
     if (!region) {
@@ -26,15 +55,30 @@ export const Cart = () => {
   const confirmAndSend = () => {
     let message = `*🛒 NUEVO PEDIDO - BARTORI*\n\n`;
     message += `📍 *Región:* ${region}\n\n`;
+    
+    if (applyBasesDiscount) {
+      message += `🎉 *DESCUENTO APLICADO:* -S/ 1.00 en cada base (${totalBasesUnits} bases)\n`;
+      message += `💰 *Ahorro total:* S/ ${totalBasesUnits.toFixed(2)}\n\n`;
+    }
+    
     message += `*PRODUCTOS:*\n`;
     message += `${'─'.repeat(30)}\n`;
 
     cartItems.forEach((item, index) => {
-      const price = item.prices[region];
+      const originalPrice = item.prices[region];
+      const price = getPriceWithDiscount(item);
       const subtotal = price * item.quantity;
+      const hasDiscount = item.category === 'bases' && applyBasesDiscount;
+      
       message += `\n${index + 1}. *${item.name}*\n`;
       message += `   • Cantidad: ${item.quantity} ${item.quantity === 1 ? 'caja' : 'cajas'}\n`;
-      message += `   • Precio unitario: S/ ${price.toFixed(2)}\n`;
+      
+      if (hasDiscount) {
+        message += `   • Precio unitario: ~S/ ${originalPrice.toFixed(2)}~ → S/ ${price.toFixed(2)} (-S/ 1.00)\n`;
+      } else {
+        message += `   • Precio unitario: S/ ${price.toFixed(2)}\n`;
+      }
+      
       message += `   • Subtotal: S/ ${subtotal.toFixed(2)}\n`;
     });
 
@@ -131,12 +175,50 @@ export const Cart = () => {
           </div>
         )}
 
+        {/* Alerta de descuento en bases - Cerca de conseguirlo */}
+        {totalBasesUnits > 0 && totalBasesUnits < 15 && (
+          <div className="bg-green-50 border-l-4 border-green-500 p-4 mb-6 rounded-xl">
+            <div className="flex items-start gap-3">
+              <Package className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
+              <div>
+                <p className="font-bold text-green-800 mb-1">
+                  ¡Estás cerca de un descuento! 🎉
+                </p>
+                <p className="text-green-700 text-sm">
+                  Tienes {totalBasesUnits} {totalBasesUnits === 1 ? 'base' : 'bases'} en tu carrito. 
+                  Agrega {15 - totalBasesUnits} {(15 - totalBasesUnits) === 1 ? 'base' : 'bases'} más para obtener <strong>S/ 1.00 de descuento</strong> en cada base.
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Alerta de descuento aplicado */}
+        {applyBasesDiscount && (
+          <div className="bg-green-50 border-l-4 border-green-500 p-4 mb-6 rounded-xl">
+            <div className="flex items-start gap-3">
+              <Package className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
+              <div>
+                <p className="font-bold text-green-800 mb-1">
+                  ¡Descuento aplicado! ✓
+                </p>
+                <p className="text-green-700 text-sm">
+                  Has agregado {totalBasesUnits} bases. Cada base tiene <strong>S/ 1.00 de descuento</strong>.
+                  Ahorro total: <strong>S/ {totalBasesUnits.toFixed(2)}</strong>
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Lista de productos */}
           <div className="lg:col-span-2 space-y-4">
             {cartItems.map((item) => {
-              const price = region ? item.prices[region] : 0;
+              const originalPrice = region ? item.prices[region] : 0;
+              const price = getPriceWithDiscount(item);
               const subtotal = price * item.quantity;
+              const hasDiscount = item.category === 'bases' && applyBasesDiscount;
 
               return (
                 <div
@@ -158,9 +240,28 @@ export const Cart = () => {
                       </h3>
                       
                       {region ? (
-                        <p className="text-[#322B80] font-bold text-2xl">
-                          S/ {price.toFixed(2)} <span className="text-sm text-gray-500 font-normal">por caja</span>
-                        </p>
+                        <div>
+                          {hasDiscount ? (
+                            <div className="flex items-center gap-3">
+                              <div className="flex items-baseline gap-2">
+                                <span className="text-gray-400 line-through text-lg">S/ {originalPrice.toFixed(2)}</span>
+                                <span className="text-[#322B80] font-bold text-2xl">S/ {price.toFixed(2)}</span>
+                              </div>
+                              <span className="bg-green-100 text-green-700 px-2 py-1 rounded-lg text-xs font-bold">
+                                -S/ 1.00
+                              </span>
+                            </div>
+                          ) : (
+                            <p className="text-[#322B80] font-bold text-2xl">
+                              S/ {price.toFixed(2)} <span className="text-sm text-gray-500 font-normal">por caja</span>
+                            </p>
+                          )}
+                          {hasDiscount && (
+                            <p className="text-green-600 text-xs font-semibold mt-1">
+                              ✓ Descuento aplicado por compra de {totalBasesUnits} bases
+                            </p>
+                          )}
+                        </div>
                       ) : (
                         <p className="text-gray-400 italic text-sm">
                           Selecciona región para ver precio
@@ -235,6 +336,26 @@ export const Cart = () => {
                       <span>Productos ({cartItems.length})</span>
                       <span className="font-bold">S/ {total.toFixed(2)}</span>
                     </div>
+                    
+                    {applyBasesDiscount && (
+                      <div className="bg-green-50 border border-green-200 rounded-lg p-3">
+                        <div className="flex items-start gap-2">
+                          <Package className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
+                          <div className="flex-1">
+                            <p className="text-green-800 font-bold text-xs mb-1">
+                              ✓ Descuento aplicado
+                            </p>
+                            <p className="text-green-700 text-xs">
+                              {totalBasesUnits} bases con -S/ 1.00 c/u
+                            </p>
+                            <p className="text-green-800 font-bold text-xs mt-1">
+                              Ahorro: S/ {totalBasesUnits.toFixed(2)}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    
                     <div className="flex justify-between items-center text-sm">
                       <div className="flex items-center gap-1 text-gray-500">
                         <MapPin className="w-4 h-4" />
@@ -302,8 +423,9 @@ export const Cart = () => {
       {/* Modal de confirmación - con región */}
       {showConfirmModal && region && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-2xl max-w-lg w-full shadow-2xl">
-            <div className="border-b border-gray-100 p-6 flex justify-between items-center">
+          <div className="bg-white rounded-2xl max-w-lg w-full shadow-2xl max-h-[90vh] flex flex-col">
+            {/* Header fijo */}
+            <div className="border-b border-gray-100 p-6 flex justify-between items-center flex-shrink-0">
               <div>
                 <h3 className="font-bold text-2xl text-[#322B80]">Confirmar Pedido</h3>
                 <p className="text-gray-500 text-sm mt-1">Verifica los datos antes de enviar</p>
@@ -316,7 +438,8 @@ export const Cart = () => {
               </button>
             </div>
 
-            <div className="p-6">
+            {/* Contenido scrolleable */}
+            <div className="p-6 overflow-y-auto flex-1">
               <div className="bg-amber-50 border-l-4 border-[#D8992F] p-4 mb-6 rounded-lg">
                 <div className="flex items-start gap-3">
                   <MapPin className="w-6 h-6 text-[#D8992F] flex-shrink-0 mt-0.5" />
@@ -333,13 +456,31 @@ export const Cart = () => {
 
               <div className="bg-gray-50 rounded-xl p-4 mb-6">
                 <h4 className="font-bold text-gray-700 mb-3">Resumen del pedido:</h4>
-                <div className="space-y-2 text-sm">
-                  {cartItems.map((item, index) => (
-                    <div key={item.id} className="flex justify-between text-gray-600">
-                      <span>{index + 1}. {item.name.substring(0, 30)}...</span>
-                      <span className="font-semibold">{item.quantity}x</span>
-                    </div>
-                  ))}
+                
+                {applyBasesDiscount && (
+                  <div className="bg-green-100 border-l-4 border-green-500 p-3 mb-3 rounded">
+                    <p className="text-green-800 text-sm font-bold mb-1">
+                      ✓ Descuento en bases aplicado
+                    </p>
+                    <p className="text-green-700 text-xs">
+                      {totalBasesUnits} bases × S/ 1.00 = -S/ {totalBasesUnits.toFixed(2)}
+                    </p>
+                  </div>
+                )}
+                
+                <div className="space-y-2 text-sm max-h-60 overflow-y-auto">
+                  {cartItems.map((item, index) => {
+                    const hasDiscount = item.category === 'bases' && applyBasesDiscount;
+                    return (
+                      <div key={item.id} className="flex justify-between text-gray-600">
+                        <span className="flex-1">
+                          {index + 1}. {item.name.substring(0, 30)}...
+                          {hasDiscount && <span className="text-green-600 ml-1">(-S/ 1)</span>}
+                        </span>
+                        <span className="font-semibold">{item.quantity}x</span>
+                      </div>
+                    );
+                  })}
                 </div>
                 <div className="border-t mt-3 pt-3 flex justify-between items-center">
                   <span className="font-bold text-gray-700">Total:</span>
@@ -347,10 +488,13 @@ export const Cart = () => {
                 </div>
               </div>
 
-              <p className="text-gray-600 text-sm mb-6 text-center">
+              <p className="text-gray-600 text-sm text-center">
                 ¿La región es correcta? Si necesitas cambiarla, cancela y selecciónala en el header.
               </p>
+            </div>
 
+            {/* Footer fijo con botones */}
+            <div className="border-t border-gray-100 p-6 flex-shrink-0">
               <div className="flex gap-3">
                 <button
                   onClick={() => setShowConfirmModal(false)}
